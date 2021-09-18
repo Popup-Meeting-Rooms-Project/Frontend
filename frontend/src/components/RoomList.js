@@ -1,13 +1,12 @@
 import { useState, useMemo, useEffect } from 'react'
-import EventAvailableIcon from '@material-ui/icons/EventAvailable'
-import EventBusyIcon from '@material-ui/icons/EventBusy'
 
-import Table from './components/Table'
+/* import EventAvailableIcon from '@material-ui/icons/EventAvailable'
+import EventBusyIcon from '@material-ui/icons/EventBusy' */
 
-// Temporary header
-const Header = () => (<div><h1>React Example</h1></div>)
+import Table from './Table'
 
-function App() {
+
+function RoomList() {
 
   // Data logic can be moved later on to own component.
   
@@ -26,14 +25,14 @@ function App() {
   // Setting table data
   const data = useMemo(() => rooms, [rooms]);
 
-  // Setting status icons
-  const setStatus = (row) => {
+  // Setting status icons (needs Icons! Previously w/ MaterialUI)
+  /* const setStatus = (row) => {
     if (row.value === 1) {
       return <EventBusyIcon color='error' />
     } else {
       return <EventAvailableIcon style={{color: '#03D610'}} />
     }
-  }
+  } */
 
   // Setting table columns
   const columns = useMemo(() => [
@@ -43,7 +42,7 @@ function App() {
     },{
       Header: 'Status',
       accessor: 'status',
-      Cell: row => setStatus(row),
+      //Cell: row => setStatus(row),    (!) no icons displayed atm.
     },{
       Header: 'Temperature',
       accessor: 'temp',
@@ -67,4 +66,4 @@ function App() {
   )
 }
 
-export default App
+export default RoomList

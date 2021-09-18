@@ -1,10 +1,7 @@
-import { useTable } from "react-table"
+import { useTable } from 'react-table'
 
-/* import MaterialTable from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow' */
+// This is a simple table component
+
 
 // Creating a default prop getter
 const defaultPropGetter = () => ({});
