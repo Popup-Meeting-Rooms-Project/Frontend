@@ -17,6 +17,7 @@ font-family: 'Montserrat', sans-serif;
   --color-black:#0B0500;
   --color-blue:#148ab3;
   --color-grey:#BDBDBC;
+  --status-color: #ff8c00;
 }
 
 
@@ -85,8 +86,9 @@ padding: 0;
 /* Main css*/
 
 .main {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  padding-left: 2rem;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 37.5%;
 }
 
 .label {
@@ -102,20 +104,76 @@ padding: 0;
 
 .data {
   display:flex;
-  margin: 0 4rem;
-  width: 70%;
+  margin-left:1rem;
+  width: 55%;
+  padding-left: 4rem;
   background-color: var(--color-grey);
-  border-radius: 35px;
+  border-radius: 2rem;
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-.data::before {
-  content: '';
-  width: .4rem;
-  height: .4rem;
-  border-radius: 3rem;
-  background-color: red;
+.room {
+  position: absolute;
+  left: 2.5rem;
+}
+
+.floor {
+  position: absolute;
+  left: 21%;
+}
+
+.temperature {
+  position: absolute;
+  left: 45%;
+}
+
+.co2 {
+  position: absolute;
+  left: 64%;
+}
+
+.status {
+  float: right;
+  display: flex;
+  float: inline-end;
+  margin-left: 81%;
 }
 
 .data h2 {
   padding: 0 1rem;
+}
+
+.statusColor {
+  color:#ff8c00;
+}
+
+.inUse {
+  color: red;
+}
+
+.available {
+  color: green;
+}
+
+.redCircle {
+  content: '';
+  position: absolute;
+  top: 1.2rem;
+  left: 1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 3rem;
+  background-color: red;
+}
+
+.greenCircle {
+  content: '';
+  position: absolute;
+  top: 1.2rem;
+  left: 1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 3rem;
+  background-color: green;
 }

@@ -2,62 +2,49 @@
 import React, { useState, useEffect } from 'react';
 import '../css/App.css';
 import axios from 'axios';
+import data from './placeholderdata.json';
 export default function Content() {
 
-    const [tests, setTests] = useState([]);
-    
-    useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-                .then(res => {
-                    console.log(res)
-                    setTests(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        
-    }, [])
+
+    const [posts, setPosts] = useState([]);
+
+    const statusBall = document.querySelector('.statusCircle');
+    const statusInfo = document.querySelector('.statusColor');
+
+    /* useEffect(() => {
+         axios.get('https://jsonplaceholder.typicode.com/users')
+             .then(res => {
+                 console.log(res)
+                 setPosts(res.data)
+             })
+             .catch(err => {
+                 console.log(err)
+             })
+ 
+     }, [])*/
+
+    const setStatus = (stats) => {
+        if (stats == true) {
+            return <div class="statusChange"><div class="greenCircle"></div><div class="available">Available</div></div>
+        } else {
+            return <div class="statusChange"><div class="redCircle"></div><div class="inUse">In use</div></div>
+
+        }
+    }
+
 
     //example data
     return (
         <div class="contentarea">
-            {tests.map(test =>
-                <div key={test.id} class="data">
-                    <h2>name: {test.name}</h2>
-                    <h2>username: {test.username}</h2>
-                    <h2>email: {test.email}</h2>
+            {data.map(post =>
+                <div key={post.room} class="data">
+                    <h2 class="room">{post.room}</h2>
+                    <h2 class="floor">{post.floor}</h2>
+                    <h2 class="temperature">{post.temperature}</h2>
+                    <h2 class="co2">{post.co2}</h2>
+                    <h2 class="status">{setStatus(post.status)}</h2>
                 </div>)}
         </div>
     )
 }
 
-/*
-<div class="contentarea">
-            {posts.map(post =>
-                <div key={post.roomNo} class="data">
-                    <h2>{post.roomNo}</h2>
-                    <h2>{post.floor}</h2>
-                    <h2>{post.temp}</h2>
-                    <h2>{post.co2}</h2>
-                </div>)}
-        </div>
-
-
-
-
-
-<div class="contentarea">
-            {posts.map(post =>
-                <div key={post.room} class="data">
-                    <h2>{post.room}</h2>
-                    <h2>{post.floor}</h2>
-                    <h2>{post.temperature}</h2>
-                    <h2>{post.co2}</h2>
-                    <h2><span class="status">{post.status}</span></h2>
-                </div>)}
-        </div>
-
-            
-
-
-    )*/ 

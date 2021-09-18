@@ -26,7 +26,7 @@ const formatDate = (date) => {
             break;
         case 6:
             month = 'July';
-            break;                
+            break;
         case 7:
             month = 'August';
             break;
@@ -44,14 +44,14 @@ const formatDate = (date) => {
             break;
         default:
     }
-    
+
     return date.getDate() + " " + month + " " + date.getFullYear();
 }
 
-const formatTime = (date) => 
+const formatTime = (date) =>
     (date.getMinutes() > 9) ? date.getHours() + ":" + date.getMinutes() : date.getHours() + ":0" + date.getMinutes();
 
-    
+
 export default function Header() {
     const current = new Date();
     const date = formatDate(current);
@@ -61,7 +61,7 @@ export default function Header() {
     return (
         <div class="top">
             <div class="top-row">
-                <h1 class="title">eficode Oy - Helsinki Office</h1>
+                <h1 class="title">eficode - Helsinki Office</h1>
                 <h1 class="time">{time}</h1>
             </div>
             <div class="bottom-row">

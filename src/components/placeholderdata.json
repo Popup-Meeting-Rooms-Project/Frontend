@@ -1,0 +1,44 @@
+[
+    {
+        "room": "a3",
+        "floor": "1",
+        "temperature": "20",
+        "co2": "28%",
+        "status": true
+    },
+    {
+        "room": "b2",
+        "floor": "3",
+        "temperature": "19",
+        "co2": "30%",
+        "status": false
+    },
+    {
+        "room": "c12",
+        "floor": "2",
+        "temperature": "22",
+        "co2": "40%",
+        "status": true
+    },
+    {
+        "room": "d32",
+        "floor": "5",
+        "temperature": "21",
+        "co2": "30%",
+        "status": true
+    },
+    {
+        "room": "d2",
+        "floor": "2",
+        "temperature": "20",
+        "co2": "32%",
+        "status": true
+    },
+    {
+        "room": "a1",
+        "floor": "5",
+        "temperature": "17",
+        "co2": "10%",
+        "status": false
+    }
+]
