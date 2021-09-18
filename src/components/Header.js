@@ -42,6 +42,7 @@ const formatDate = (date) => {
         case 11:
             month = 'December';
             break;
+        default:
     }
     
     return date.getDate() + " " + month + " " + date.getFullYear();
