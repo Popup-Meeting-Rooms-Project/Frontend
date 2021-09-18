@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/*
+FONTS:
+font-family: 'Merriweather', serif;
+font-family: 'Montserrat', sans-serif;
+
+
+#foo {
+    color: var(--main-color);
+}
+
+*/
+
+:root {
+  --color-white:#FFFFFF;
+  --color-yellow:#FFD700;
+  --color-black:#0B0500;
+  --color-blue:#148ab3;
+  --color-grey:#BDBDBC;
+}
+
+
+body {
+margin: 0;
+padding: 0;
+}
+
+
+.App {
+  text-align: center;
+}
+
+/* Header css*/
+
+.top {
+  position: relative;
+  background-color: black;
+  color: var(--color-yellow);
+  padding: 0.33em;
+}
+
+.top-row {
+  display: flex;
+}
+
+
+.bottom-row {
+  display: flex;
+}
+
+.title {
+  float: left;
+  margin-top: 0.33em;
+  margin-bottom: 0.33em;
+  margin-left: 0.33em;
+}
+
+.time {
+  position: absolute;
+  right: 0.33em;
+  display: flex;
+  justify-content: flex-end;
+  float:right;
+  margin-top: 0.33em;
+  margin-bottom: 0.33em;
+}
+
+.subtitle {
+  float:left;
+  margin-top: 0.33em;
+  margin-bottom: 0.33em;
+  margin-left: 0.33em;
+}
+
+.date {
+  align-items: flex-end;
+  float:right;
+  position: absolute;
+  right: 0.33em;
+  margin-top: 0.33em;
+  margin-bottom: 0.33em;
+}
+
+
+/* Main css*/
+
+.main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.label {
+  display:inline;
+  padding: 0 1rem;
+}
+
+#map {
+  padding-left: 5rem; 
+}
