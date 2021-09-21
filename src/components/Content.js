@@ -25,23 +25,23 @@ export default function Content() {
 
     const setStatus = (stats) => {
         if (stats === true) {
-            return <div class="statusChange"><div class="greenCircle"></div><div class="available">Available</div></div>
+            return <div id="statusChange"><div id="greenCircle"></div><div id="available">Available</div></div>
         } else {
-            return <div class="statusChange"><div class="redCircle"></div><div class="inUse">In use</div></div>
+            return <div id="statusChange"><div id="redCircle"></div><div id="inUse">In use</div></div>
 
         }
     }
 
     //example data
     return (
-        <div class="contentarea">
+        <div id="contentarea">
             {data.map(post =>
-                <div key={post.room} class="data">
-                    <h2 class="room">{post.room}</h2>
-                    <h2 class="floor">{post.floor}</h2>
-                    <h2 class="temperature">{post.temperature}</h2>
-                    <h2 class="co2">{post.co2}</h2>
-                    <h2 class="status">{setStatus(post.status)}</h2>
+                <div key={post.room} id="data">
+                    <h2 id="room">{post.room}</h2>
+                    <h2 id="floor">{post.floor}</h2>
+                    <h2 id="temperature">{post.temperature}</h2>
+                    <h2 id="co2">{post.co2}</h2>
+                    <h2 id="status">{setStatus(post.status)}</h2>
                 </div>)}
         </div>
     )
