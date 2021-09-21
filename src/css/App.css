@@ -88,7 +88,7 @@ padding: 0;
 .main {
   display: grid;
   padding-left: 2rem;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 37.5%;
+  grid-template-columns: 60% 40%;
 }
 
 .label {
@@ -99,6 +99,11 @@ padding: 0;
 #map {
   padding-left: 5rem; 
 }
+
+/* Table css */
+
+
+
 
 /* Content css */
 

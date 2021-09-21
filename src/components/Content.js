@@ -1,17 +1,17 @@
+/*import { useState, useEffect } from 'react';
+import axios from 'axios';*/
 
-import React, { useState, useEffect } from 'react';
-import '../css/App.css';
-import axios from 'axios';
 import data from './placeholderdata.json';
+import '../css/App.css';
+
 export default function Content() {
 
-
-    const [posts, setPosts] = useState([]);
+    /* const [posts, setPosts] = useState([]);
 
     const statusBall = document.querySelector('.statusCircle');
     const statusInfo = document.querySelector('.statusColor');
 
-    /* useEffect(() => {
+    useEffect(() => {
          axios.get('https://jsonplaceholder.typicode.com/users')
              .then(res => {
                  console.log(res)
@@ -24,14 +24,13 @@ export default function Content() {
      }, [])*/
 
     const setStatus = (stats) => {
-        if (stats == true) {
+        if (stats === true) {
             return <div class="statusChange"><div class="greenCircle"></div><div class="available">Available</div></div>
         } else {
             return <div class="statusChange"><div class="redCircle"></div><div class="inUse">In use</div></div>
 
         }
     }
-
 
     //example data
     return (

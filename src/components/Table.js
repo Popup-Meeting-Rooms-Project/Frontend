@@ -1,4 +1,11 @@
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
+
+import MaterialTable from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TableSortLabel from '@mui/material/TableSortLabel'
 
 // This is a simple table component
 
@@ -16,44 +23,49 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
         headerGroups,
         rows,
         prepareRow,
-    } = useTable({ columns, data })
+    } = useTable({ columns, data }, useSortBy)
 
     return (
         <div>
-            <table {...getTableProps()} >
-
-                <thead>
+            <MaterialTable stickyHeader {...getTableProps()} >
+            
+                <TableHead>
                     {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <TableRow {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()} >
+                                <TableCell {...column.getHeaderProps(column.getSortByToggleProps())} >
                                     {column.render('Header')}
-                                </th>
+                                    {column.id !== 'selected' ? (
+                                        <TableSortLabel
+                                            active={column.isSorted}
+                                            direction={column.isSortedDesc ? 'desc' : 'asc'} />
+                                    ) : '' }
+                                </TableCell>
                             ))}
-                        </tr>
+                        </TableRow>
                     ))}
-                </thead>
+                </TableHead>
 
-                <tbody {...getTableBodyProps()} >
+                <TableBody {...getTableBodyProps()} >
                     {rows.map(row => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()} >
+                            <TableRow {...row.getRowProps()} >
                                 {row.cells.map(cell => {
                                     return (
-                                        <td {...cell.getCellProps([
+                                        <TableCell {...cell.getCellProps([
                                             getCellProps(cell)
                                           ])} >
                                             {cell.render('Cell')}
-                                        </td>
+                                        </TableCell>
                                     )}
                                 )}
-                            </tr>
+                            </TableRow>
                         )}
                     )}
-                </tbody>
-
-            </table>
+                </TableBody>
+            
+            </MaterialTable>
         </div>
     )
 }
