@@ -43,6 +43,7 @@ function RoomList() {
       Header: 'Status',
       accessor: 'status',
       Cell: row => setStatus(row),
+      sortType: 'basic'             // Boolean needs basic sorting. Doesn't work with default (which is alphanum).
     },{
       Header: 'Temperature',
       accessor: 'temperature',

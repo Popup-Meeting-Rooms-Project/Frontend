@@ -39,7 +39,7 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
                                         <TableSortLabel
                                             active={column.isSorted}
                                             direction={column.isSortedDesc ? 'desc' : 'asc'} />
-                                    ) : '' }
+                                    ) : null }
                                 </TableCell>
                             ))}
                         </TableRow>
