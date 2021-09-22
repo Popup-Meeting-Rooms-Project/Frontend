@@ -38,20 +38,24 @@ function RoomList() {
       accessor: 'floor',
     },{
       Header: 'Room No',
-      accessor: 'room', 
+      accessor: 'room',
+      disableFilters: true,
     },{
       Header: 'Status',
       accessor: 'status',
       Cell: row => setStatus(row),
-      sortType: 'basic'             // Boolean needs basic sorting. Doesn't work with default (which is alphanum).
+      sortType: 'basic',             // Boolean needs basic sorting. Doesn't work with default (which is alphanum).
+      disableFilters: true,
     },{
       Header: 'Temperature',
       accessor: 'temperature',
       Cell: row => <p>{row.value + ' C'}</p>,
+      disableFilters: true,
     },{
       Header: 'CO2',
       accessor: 'co2',
       Cell: row => <p>{row.value + ' %'}</p>,
+      disableFilters: true,
     },
   ], [])
 

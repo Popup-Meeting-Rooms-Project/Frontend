@@ -97,7 +97,18 @@ padding: 0;
 
 /* Table css */
 
+.MuiTableCell-root {
+  width: 20%;
+}
 
+.MuiTableCell-head {
+  padding: 0.5rem 0.4rem  0.25rem !important;
+}
+
+.MuiTableCell-body {
+  text-align: center !important;
+  padding: 0.2rem 0.25rem !important;
+}
 
 /* Content css */
 
