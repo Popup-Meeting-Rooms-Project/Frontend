@@ -103,8 +103,8 @@ padding: 0;
 /* Content css */
 
 #data {
-  display:flex;
-  margin-left:1rem;
+  display: flex;
+  margin-left: 1rem;
   width: 55%;
   padding-left: 4rem;
   background-color: var(--color-grey);
