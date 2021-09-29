@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import RoomList from './RoomList'
 import Map from './Map'
 
-import '../css/App.css'
 import sampleData from './placeholderdata.json'
 
 export default function Main() {
