@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import '../css/App.css'
 
@@ -53,9 +53,15 @@ const formatTime = (date) =>
 
 
 export default function Header() {
-    const current = new Date();
+    const [current, setCurrent] = useState(new Date())
     const date = formatDate(current);
     const time = formatTime(current);
+
+    useEffect(() => {}, [])
+
+    useEffect(() => {
+        setInterval(() => setCurrent(new Date()), 30000);
+      }, []);
 
 
     return (

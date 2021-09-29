@@ -1,34 +1,31 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import EventBusyIcon from '@mui/icons-material/EventBusy'
+import Tooltip from '@mui/material/Tooltip'
 
 import Table from './Table'
-import sampleData from './placeholderdata.json'
 
 
-function RoomList() {
-
-  // This is an implementation of the table from Table.js with our data.
-  // Data logic can be moved later on to own component (for use with the map).
+// This is an implementation of the table from Table.js with our data.
+function RoomList({rooms}) {
   
-  // Rooms data will be stored in a state
-  const [rooms, setRooms] = useState([])
-
-  // useEffect hook for populating data at first render. Later on can be used with the Axios call.
-  useEffect(() => setRooms(sampleData), [])
-
-
-  // Setting table data
-  const data = useMemo(() => rooms, [rooms]);
+  // Memoizing data to be passed
+  const data = useMemo(() => rooms, [rooms])
 
   // Setting status icons (uses Material icons, can be changed to another icon library!)
   const setStatus = (row) => {
     if (row.value === false) {
-      return <EventBusyIcon color='error' />
-    } else {
-      return <EventAvailableIcon style={{color: '#03D610'}} />
-    }
+      return ( 
+              <Tooltip title="Occupied">
+                 <EventBusyIcon color='error' />
+              </Tooltip>
+      )} else {
+      return ( 
+              <Tooltip title="Available">
+                <EventAvailableIcon style={{color: '#03D610'}} />
+              </Tooltip>
+      )}
   }
 
   // Setting table columns

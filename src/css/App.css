@@ -16,7 +16,7 @@ font-family: 'Montserrat', sans-serif;
   --color-yellow:#FFD700;
   --color-black:#0B0500;
   --color-blue:#148ab3;
-  --color-grey:#BDBDBC;
+  --color-grey:#e4e4e2;
   --status-color: #ff8c00;
 }
 
@@ -37,8 +37,8 @@ padding: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   position: relative;
-  background-color: black;
-  color: var(--color-yellow);
+  background-color: var(--color-grey);
+  color: var(--color-black);
   padding: 0.33em;
 }
 
@@ -89,10 +89,6 @@ padding: 0;
 #label {
   display:inline;
   padding: 0 1rem;
-}
-
-#map {
-  padding-left: 5rem; 
 }
 
 /* Table css */
@@ -185,5 +181,148 @@ padding: 0;
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 3rem;
+  background-color: green;
+}
+
+/* Map CSS */
+
+#map {
+  position: relative;
+  padding: 2rem 0 0 5rem; 
+}
+
+.floorMap {
+  border-color: black;
+  height: 1rem;
+}
+
+.floorLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  width: 100%;
+}
+
+.floorMap {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+}
+
+#floor4boxGreen {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: green;
+}
+
+#floor4boxRed {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: red;
+}
+
+#floor3boxGreen {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: green;
+}
+
+#floor3boxRed {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: red;
+}
+
+#floor2boxGreen {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: green;
+}
+
+#floor2boxRed {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: red;
+}
+
+#floor1boxGreen {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: green;
+}
+
+#floor1boxRed {
+  padding: 1rem;
+  margin-right: 1rem;
+  width: 12rem;
+  height: 5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: -0.4rem;
+  color: white;
+  border: 2px solid black;
+  background-color: red;
+}
+
+.redfloor {
+  background-color: red;
+}
+
+.greenfloor {
   background-color: green;
 }

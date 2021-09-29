@@ -2,7 +2,7 @@
     {
         "roomId": "a3",
         "room": 301,
-        "floor": 3,
+        "floor": 1,
         "temperature": 20,
         "co2": 28,
         "status": true
@@ -26,7 +26,7 @@
     {
         "roomId": "d32",
         "room": 501,
-        "floor": 5,
+        "floor": 3,
         "temperature": 21,
         "co2": 30,
         "status": true
@@ -45,7 +45,7 @@
         "floor": 2,
         "temperature": 17,
         "co2": 10,
-        "status": false
+        "status": true
     },
     {
         "roomId": "e3",
@@ -62,5 +62,13 @@
         "temperature": 17,
         "co2": 10,
         "status": false
+    },
+    {
+        "roomId": "e74",
+        "room": 303,
+        "floor": 3,
+        "temperature": 19,
+        "co2": 10,
+        "status": true
     }
 ]

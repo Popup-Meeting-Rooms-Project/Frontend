@@ -1,13 +1,37 @@
 import { useMemo } from 'react'
+
 import { useTable, useSortBy, useFilters } from 'react-table'
 
-import { Table as MaterialTable, TextField, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material'
+import { Table as MaterialTable, TableBody, TableHead, TableRow, TableCell, tableCellClasses,
+    TableSortLabel, TextField } from '@mui/material'
+import { styled } from '@mui/system'
 import SearchIcon from '@mui/icons-material/Search'
-
-//import css from '../css/App.css'
 
 // This is a simple table component
 
+// Style for header tablecell
+const StyledTableCell = styled(TableCell)( {
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: '#FFD700',
+      color: '#0B0500',
+      fontSize: 16,
+      //padding: '0.5rem 0.4rem  0.25rem',
+    },
+    [`&.${tableCellClasses.body}`]: {
+        textAlign: 'center',
+        padding: '0.2rem 0.25rem',
+    },
+});
+
+// Style for tablerows
+const StyledTableRow = styled(TableRow)( {
+      backgroundColor: '#f0f0ee',
+      borderColor:'#161616',
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+});
 
 // Creating a default prop getter
 const defaultPropGetter = () => ({});
@@ -57,7 +81,7 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
                 {headerGroups.map(headerGroup => (
                     <TableRow {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
-                            <TableCell {...column.getHeaderProps(column.getSortByToggleProps())} >
+                            <StyledTableCell {...column.getHeaderProps(column.getSortByToggleProps())} >
                                 {/* Used for sorting. */}
                                 {column.id !== 'selected' ? (
                                     <TableSortLabel
@@ -65,7 +89,7 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
                                         direction={column.isSortedDesc ? 'desc' : 'asc'} />
                                 ) : null }
                                 {column.render('Header')}
-                            </TableCell>
+                            </StyledTableCell>
                         ))}
                     </TableRow>
                 ))}
@@ -77,17 +101,17 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
                     {rows.map(row => {
                         prepareRow(row)
                         return (
-                            <TableRow {...row.getRowProps()} >
+                            <StyledTableRow {...row.getRowProps()} >
                                 {row.cells.map(cell => {
                                     return (
-                                        <TableCell {...cell.getCellProps([
+                                        <StyledTableCell {...cell.getCellProps([
                                             getCellProps(cell)
                                           ])} >
                                             {cell.render('Cell')}
-                                        </TableCell>
+                                        </StyledTableCell>
                                     )}
                                 )}
-                            </TableRow>
+                            </StyledTableRow>
                         )}
                     )}
 
