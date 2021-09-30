@@ -9,13 +9,17 @@ import SearchIcon from '@mui/icons-material/Search'
 
 // This is a simple table component
 
-// Style for header tablecell
+// Style for table cells
 const StyledTableCell = styled(TableCell)( {
+    [`&.${tableCellClasses.root}`]: {
+        width: '20%',
+    },
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: '#FFD700',
       color: '#0B0500',
       fontSize: 16,
-      //padding: '0.5rem 0.4rem  0.25rem',
+      padding: '0.5rem 1.9rem  0.25rem 0',
+      textAlign: 'center',
     },
     [`&.${tableCellClasses.body}`]: {
         textAlign: 'center',
