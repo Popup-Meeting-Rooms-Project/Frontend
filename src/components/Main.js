@@ -12,7 +12,8 @@ export default function Main() {
     const [rooms, setRooms] = useState([])
 
     useEffect(() => {
-        setRooms(sampleData)
+        // Sort rooms by number on first run.
+        setRooms(sampleData.sort((a, b) => a.room - b.room))
     }, [])
 
     return (
