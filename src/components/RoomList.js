@@ -43,7 +43,7 @@ function RoomList({rooms}) {
       Cell: row => setStatus(row),
       sortType: 'basic',             // Boolean needs basic sorting. Doesn't work with default (which is alphanum).
       disableFilters: true,
-    },{
+    },/*{
       Header: 'Temperature',
       accessor: 'temperature',
       Cell: row => <p>{row.value + ' C'}</p>,
@@ -53,7 +53,7 @@ function RoomList({rooms}) {
       accessor: 'co2',
       Cell: row => <p>{row.value + ' %'}</p>,
       disableFilters: true,
-    },
+    },*/
   ], [])
 
 
