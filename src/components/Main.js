@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import RoomList from './RoomList'
 import Map from './Map'
 
-import sampleData from './placeholderdata.json'
 
 export default function Main() {
     // Data handling (to be moved into own component?)
@@ -17,18 +16,20 @@ export default function Main() {
         setRooms(rooms => rooms.map(room => (room.roomNo === dataParsed.roomNo) ? dataParsed : room))
     } */
 
+    // Back-End URL is stored in an env variable.
+    const url = process.env.REACT_APP_API_URL
+
     // Creating an instance of our event source.
-    // const eventSource = new EventSource(process.env.REACT_APP_API_URL + '/updates')
+    // const eventSource = new EventSource(url + '/updates')
 
     // useEffect hook for populating data at first render. Using hard-coded data atm.
     useEffect(() => {
-
-        /* Fetching Data from the Back End.
-        fetch(`process.env.REACT_APP_API_URL + '/all'`)
+        
+        fetch(url + '/json')
             .then(res => res.status === 200 ? res.json() : console.log(res))
-            .then(resJSON => setRooms(resJSON.data))
+            // Data from the BackEnd is sorted, then stored in the state.
+            .then(resJSON => setRooms(resJSON.sort((a, b) => a.room - b.room)))
             .catch(err => console.log(err))
-        */
         
         // Listening for messages from the Back-End using Server-Sent Events.
         /*eventSource.onmessage = function(event) {
@@ -36,10 +37,7 @@ export default function Main() {
             // setRooms(event.data)
             // updateData(event.data)
         }*/
-
-        // Sort rooms by number on first run.
-        setRooms(sampleData.sort((a, b) => a.room - b.room))
-    }, [])
+    }, [url])
 
     return (
         <div id="main">
