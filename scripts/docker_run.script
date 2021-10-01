@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# The path to build needs to be changed (use absolute path!)
+sudo docker run --name frontend-app -v /.../build:/usr/share/nginx/html:ro -d -p 80:80 nginx

@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo docker stop frontend-app
+sudo docker rm frontend-app
