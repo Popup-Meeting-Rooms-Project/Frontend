@@ -5,27 +5,25 @@ import Map from './Map'
 
 
 export default function Main() {
-    // Data handling (to be moved into own component?)
 
     // Rooms data will be stored in a state
     const [rooms, setRooms] = useState([])
+    
 
-    /*// Updating rooms data
-    const updateData = (data) => {
-        const dataParsed = JSON.parse(data)
-        setRooms(rooms => rooms.map(room => (room.roomNo === dataParsed.roomNo) ? dataParsed : room))
-    } */
+    // Updating rooms data
+    /*const updateStatus = (data) => {
+        setRooms(rooms =>
+            rooms.map(room =>
+                (room.roomNo === data.roomNo) ? { ...room, status: data.status } : room))
+    }*/
 
-    // Back-End URL is stored in an env variable.
-    const url = process.env.REACT_APP_API_URL
-
-    // Creating an instance of our event source.
-    // const eventSource = new EventSource(url + '/updates')
-
-    // useEffect hook for populating data at first render. Using hard-coded data atm.
+    // useEffect hook for data handling. Back-End URLs are stored in env variables.
     useEffect(() => {
+
+        // Creating an instance of our event source.
+        //const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
         
-        fetch(url + '/json')
+        fetch(process.env.REACT_APP_API_URL)
             .then(res => res.status === 200 ? res.json() : console.log(res))
             // Data from the BackEnd is sorted, then stored in the state.
             .then(resJSON => setRooms(resJSON.sort((a, b) => a.room - b.room)))
@@ -34,10 +32,11 @@ export default function Main() {
         // Listening for messages from the Back-End using Server-Sent Events.
         /*eventSource.onmessage = function(event) {
             console.log(event)
-            // setRooms(event.data)
-            // updateData(event.data)
+            //const dataParsed = JSON.parse(event.data)
+            //updateData(dataParsed)
+            // updateStatus(JSON.parse(event.data)) THIS COULD BE ONE LINE ONLY
         }*/
-    }, [url])
+    }, [])
 
     return (
         <div id="main">
