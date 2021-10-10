@@ -1,15 +1,18 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import EventBusyIcon from '@mui/icons-material/EventBusy'
-import Tooltip from '@mui/material/Tooltip'
+import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 
 import Table from './Table'
 
-
 // This is an implementation of the table from Table.js with our data.
 function RoomList({rooms}) {
-  
+
+  // We create a state to store the checkbox condition and status filtering.
+  const [checked, setChecked] = useState(false);
+
+
   // Memoizing data to be passed
   const data = useMemo(() => rooms, [rooms])
 
@@ -41,8 +44,13 @@ function RoomList({rooms}) {
       Header: 'Status',
       accessor: 'status',
       Cell: row => setStatus(row),
-      sortType: 'basic',             // Boolean needs basic sorting. Doesn't work with default (which is alphanum).
-      disableFilters: true,
+      // This is a checkbox for filtering available rooms.
+      Filter: ({ column: { setFilter }, }) => (
+        <FormControlLabel
+            control={<Checkbox checked={checked} onChange={e => {
+              setChecked(e.target.checked)
+              setFilter(e.target.checked)}} color="default" />}
+            label="Available only" />),
     },/*{
       Header: 'Temperature',
       accessor: 'temperature',
@@ -54,7 +62,7 @@ function RoomList({rooms}) {
       Cell: row => <p>{row.value + ' %'}</p>,
       disableFilters: true,
     },*/
-  ], [])
+  ], [checked])
 
 
   // Using react-table v7 (component Table.js)

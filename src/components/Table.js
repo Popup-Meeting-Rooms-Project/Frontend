@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 
-import { useTable, useSortBy, useFilters } from 'react-table'
+import { useTable, useFilters } from 'react-table'
 
-import { Table as MaterialTable, TableBody, TableHead, TableRow, TableCell, tableCellClasses,
-    TableSortLabel, TextField } from '@mui/material'
+import { Table as MaterialTable, TableBody, TableHead, TableRow, TableCell, tableCellClasses, TextField } from '@mui/material'
 import { styled } from '@mui/system'
 import SearchIcon from '@mui/icons-material/Search'
 
@@ -14,6 +13,10 @@ const StyledTableCell = styled(TableCell)( {
     [`&.${tableCellClasses.root}`]: {
         width: '20%',
     },
+    [`&.${tableCellClasses.sizeMedium}`]: {
+        padding: '0.4em 0 0.1em 0',
+        minWidth: '34%',
+    },
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: '#FFD700',
       color: '#0B0500',
@@ -23,7 +26,6 @@ const StyledTableCell = styled(TableCell)( {
     },
     [`&.${tableCellClasses.body}`]: {
         textAlign: 'center',
-        padding: '0.2rem 0.25rem',
     },
 });
 
@@ -63,45 +65,42 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
         headerGroups,
         rows,
         prepareRow,
-    } = useTable({ columns, data, defaultColumn }, useFilters, useSortBy)
+    } = useTable({ columns, data, defaultColumn }, useFilters)
 
     return (
         <div>
+
+            {/* Row used for filtering. */}
+            <MaterialTable {...getTableProps()} >
+                <TableBody>
+                {headerGroups.map(headerGroup => (
+                        <TableRow {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map(column => (
+                                <StyledTableCell {...column.getHeaderProps()} >
+                                    {column.canFilter ? column.render('Filter') : null}
+                                </StyledTableCell>
+                            ))}
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </MaterialTable>
+
+            {/* Our "rooms" table. */}
             <MaterialTable stickyHeader {...getTableProps()} >
             
                 <TableHead>
-
-                {headerGroups.map(headerGroup => (
-                    <TableRow {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map(column => (
-                            <TableCell {...column.getHeaderProps(column.getSortByToggleProps())} >
-                                {/* Used for manual filtering. */}
-                                {column.canFilter ? column.render('Filter') : null}
-                            </TableCell>
-                        ))}
-                    </TableRow>
-                ))}
-
-                {headerGroups.map(headerGroup => (
-                    <TableRow {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map(column => (
-                            <StyledTableCell {...column.getHeaderProps(column.getSortByToggleProps())} >
-                                {/* Used for sorting. */}
-                                {column.id !== 'selected' ? (
-                                    <TableSortLabel
-                                        active={column.isSorted}
-                                        direction={column.isSortedDesc ? 'desc' : 'asc'} />
-                                ) : null }
-                                {column.render('Header')}
-                            </StyledTableCell>
-                        ))}
-                    </TableRow>
-                ))}
-
+                    {headerGroups.map(headerGroup => (
+                        <TableRow {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map(column => (
+                                <StyledTableCell {...column.getHeaderProps()} >
+                                    {column.render('Header')}
+                                </StyledTableCell>
+                            ))}
+                        </TableRow>
+                    ))}
                 </TableHead>
 
                 <TableBody {...getTableBodyProps()} >
-
                     {rows.map(row => {
                         prepareRow(row)
                         return (
@@ -118,7 +117,6 @@ const Table = ({columns, data, getCellProps = defaultPropGetter}) => {
                             </StyledTableRow>
                         )}
                     )}
-
                 </TableBody>
             
             </MaterialTable>
