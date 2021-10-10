@@ -67,7 +67,7 @@ export default function Header() {
     return (
         <div id="top">
             <div id="top-row">
-                <h1 id="title">eficode - Helsinki Office</h1>
+                <h1 id="title">Helsinki Office</h1>
                 <h1 id="time">{time}</h1>
             </div>
             <div id="bottom-row">
