@@ -10,16 +10,17 @@ import Table from './Table'
 function RoomList({rooms, selected}) {
 
   // We create a state to store the checkbox condition and status filtering.
-  // We save and load the state with localStorage so it persists between sessions.
+  // This is also stored in localStorage for persistence.
   const [checked, setChecked] = useState(() => {
     try {
       let saved = JSON.parse(window.localStorage.getItem('checked'))
+      // Default to false, if stored item isn't boolean.
       return (typeof saved === 'boolean') ? saved : false
     } catch (e) {
-        return false
+      // Default to false if any errors arise.
+      return false
     }
   })
-
 
   // useEffect hook for saving selected status to localStorage.
   useEffect(() => window.localStorage.setItem('checked', checked), [checked])

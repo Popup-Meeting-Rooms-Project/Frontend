@@ -10,18 +10,26 @@ export default function Main() {
     const [rooms, setRooms] = useState([])
 
     // Selected floors used for filtering
+    // We save and load the state with localStorage so it persists between sessions.
     const [selected, setSelected] = useState(() => {
         try {
+            // String stored in localStorage needs to be parsed first.
             let saved = JSON.parse(window.localStorage.getItem('selected'))
+            // If there was an array saved, set that as selected, otherwise set an empty array.
             return (Object.prototype.toString.call(saved) === '[object Array]') ? saved : []
         } catch (e) {
             console.log("Error!")           // USED DURING DEVELOPMENT ONLY!
             return []
         }
     })
+
+    // useEffect hook for saving selected status to localStorage. Objects must be -JSON- stringified!
+    useEffect(() => window.localStorage.setItem('selected', JSON.stringify(selected)), [selected])
+
+    //window.localStorage.clear()         // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
     
 
-    // Updating rooms data
+    // Functio for updating rooms data
     /*const updateStatus = (data) => {
         setRooms(rooms =>
             rooms.map(room =>
@@ -50,10 +58,6 @@ export default function Main() {
         }*/
     }, [])
 
-    // useEffect hook for saving selected status to localStorage. Objects must be -JSON- stringified!
-    useEffect(() => window.localStorage.setItem('selected', JSON.stringify(selected)), [selected])
-    
-    //window.localStorage.clear()         // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
 
     return (
         <div id="main">
