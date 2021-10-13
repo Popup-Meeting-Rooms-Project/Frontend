@@ -5,50 +5,39 @@
 All documentation will be stored in the `docs` folder of the repository.
 
 
-## Available Scripts (Added by create-react-app)
+## Back End Communication and fetching Data
 
-In the project directory, you can run:
+It communicates with the Back End of our project (found [here](https://github.com/Popup-Meeting-Rooms-Project/Backend)) which serves the clients with the required data. Back End URLs are stored in environment variables for security and portability reasons.
 
-### `npm start`
+Data must be in JSON form and follow these models:
+- Room Object (must at least contain the following, may contain additional fields which will be disregarded).
+```
+{
+  "roomId": string,
+  "room": number,
+  "floor": number,
+  "status": boolean
+ }
+ ```
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Status update
+```
+{
+  "roomId": string,
+  "status": boolean
+}
+```
 
 
-### Code Splitting
+### Main.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This is the main view of our application taking care of data handling and containing both the Table and Map view for display.
 
-### Analyzing the Bundle Size
+Initial data is obtained using "fetch" to perform a `GET` request to the REST API and updates to rooms' statuses are done with Server Sent Events.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Main-MQTT.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This was created as a POC during the first Sprint, when the teams were still debating whether the Front End should get updates directly from the MQTT broker or the Node server (via SSEs). Although we decided against using MQTT from the client's side, the implementation is left here as it might be of value (as of the beginning of the second Sprint, it was working correctly). The REST API is used for initial fetching of the data, as in the final version.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
