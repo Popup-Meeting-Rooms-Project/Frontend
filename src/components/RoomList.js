@@ -20,12 +20,6 @@ function RoomList({rooms, selected}) {
     }
   })
 
-  /* DOES NOT UPDATE ON FIRST RUN
-  useEffect(() => {
-    let saved = JSON.parse(window.localStorage.getItem('checked'))
-    return (typeof saved === 'boolean') ? saved : false
-  }, [])*/
-
 
   // useEffect hook for saving selected status to localStorage.
   useEffect(() => window.localStorage.setItem('checked', checked), [checked])
@@ -72,12 +66,6 @@ function RoomList({rooms, selected}) {
       Header: 'Status',
       accessor: 'status',
       Cell: row => setStatus(row),
-      /* This is a checkbox for filtering available rooms.
-      Filter: ({ column: { setFilter } }) => (
-        <FormControlLabel
-            control={<Checkbox checked={checked} onChange={e => {
-              setChecked(e.target.checked)}} color="default" />}
-            label="Available only" />),*/
     },/*{
       Header: 'Temperature',
       accessor: 'temperature',

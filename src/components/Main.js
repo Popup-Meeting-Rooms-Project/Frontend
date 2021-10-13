@@ -10,7 +10,6 @@ export default function Main() {
     const [rooms, setRooms] = useState([])
 
     // Selected floors used for filtering
-    //const [selected, setSelected] = useState([2])
     const [selected, setSelected] = useState(() => {
         try {
             let saved = JSON.parse(window.localStorage.getItem('selected'))
@@ -28,6 +27,7 @@ export default function Main() {
             rooms.map(room =>
                 (room.roomNo === data.roomNo) ? { ...room, status: data.status } : room))
     }*/
+
 
     // useEffect hook for data handling, runs only at first. Back-End URLs are stored in env variables.
     useEffect(() => {
@@ -52,6 +52,7 @@ export default function Main() {
 
     // useEffect hook for saving selected status to localStorage. Objects must be -JSON- stringified!
     useEffect(() => window.localStorage.setItem('selected', JSON.stringify(selected)), [selected])
+    
     //window.localStorage.clear()         // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
 
     return (
