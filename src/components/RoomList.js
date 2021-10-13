@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import EventBusyIcon from '@mui/icons-material/EventBusy'
@@ -7,14 +7,43 @@ import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 import Table from './Table'
 
 // This is an implementation of the table from Table.js with our data.
-function RoomList({rooms}) {
+function RoomList({rooms, selected}) {
 
   // We create a state to store the checkbox condition and status filtering.
-  const [checked, setChecked] = useState(false);
+  // We save and load the state with localStorage so it persists between sessions.
+  const [checked, setChecked] = useState(() => {
+    try {
+      let saved = JSON.parse(window.localStorage.getItem('checked'))
+      return (typeof saved === 'boolean') ? saved : false
+    } catch (e) {
+        return false
+    }
+  })
+
+  /* DOES NOT UPDATE ON FIRST RUN
+  useEffect(() => {
+    let saved = JSON.parse(window.localStorage.getItem('checked'))
+    return (typeof saved === 'boolean') ? saved : false
+  }, [])*/
 
 
-  // Memoizing data to be passed
-  const data = useMemo(() => rooms, [rooms])
+  // useEffect hook for saving selected status to localStorage.
+  useEffect(() => window.localStorage.setItem('checked', checked), [checked])
+
+
+  // We filter and memoize the data to be passed
+  const data = useMemo(() => {
+    if (checked) {
+      return selected.length === 0
+        ? rooms.filter(room => room.status === checked)
+        : rooms.filter(room => selected.includes(room.floor) && room.status === checked)
+    } else if (selected && selected.length !== 0) {
+      return rooms.filter(room => (selected.includes(room.floor)))
+    } else {
+      return rooms
+    }
+  }, [rooms, selected, checked])
+
 
   // Setting status icons (uses Material icons, can be changed to another icon library!)
   const setStatus = (row) => {
@@ -39,18 +68,16 @@ function RoomList({rooms}) {
     },{
       Header: 'Room No',
       accessor: 'room',
-      disableFilters: true,
     },{
       Header: 'Status',
       accessor: 'status',
       Cell: row => setStatus(row),
-      // This is a checkbox for filtering available rooms.
-      Filter: ({ column: { setFilter }, }) => (
+      /* This is a checkbox for filtering available rooms.
+      Filter: ({ column: { setFilter } }) => (
         <FormControlLabel
             control={<Checkbox checked={checked} onChange={e => {
-              setChecked(e.target.checked)
-              setFilter(e.target.checked)}} color="default" />}
-            label="Available only" />),
+              setChecked(e.target.checked)}} color="default" />}
+            label="Available only" />),*/
     },/*{
       Header: 'Temperature',
       accessor: 'temperature',
@@ -62,16 +89,24 @@ function RoomList({rooms}) {
       Cell: row => <p>{row.value + ' %'}</p>,
       disableFilters: true,
     },*/
-  ], [checked])
+  ], [])
 
 
   // Using react-table v7 (component Table.js)
   return (
     <div>
-        <Table 
-          columns={columns}
-          data={data}
-        />
+
+      <FormControlLabel
+        label='Available only'
+        style={{display: 'flex', padding: '0.5em 0.5em 0 0', marginBottom: '-0.4em', justifyContent: 'flex-end'}}
+        control={<Checkbox checked={checked} onChange={e => setChecked(e.target.checked)} color='default' />}
+      />
+
+      <Table 
+        columns={columns}
+        data={data}
+      />
+
     </div>
   )
 }

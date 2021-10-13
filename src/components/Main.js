@@ -8,6 +8,18 @@ export default function Main() {
 
     // Rooms data will be stored in a state
     const [rooms, setRooms] = useState([])
+
+    // Selected floors used for filtering
+    //const [selected, setSelected] = useState([2])
+    const [selected, setSelected] = useState(() => {
+        try {
+            let saved = JSON.parse(window.localStorage.getItem('selected'))
+            return (Object.prototype.toString.call(saved) === '[object Array]') ? saved : []
+        } catch (e) {
+            console.log("Error!")           // USED DURING DEVELOPMENT ONLY!
+            return []
+        }
+    })
     
 
     // Updating rooms data
@@ -17,7 +29,7 @@ export default function Main() {
                 (room.roomNo === data.roomNo) ? { ...room, status: data.status } : room))
     }*/
 
-    // useEffect hook for data handling. Back-End URLs are stored in env variables.
+    // useEffect hook for data handling, runs only at first. Back-End URLs are stored in env variables.
     useEffect(() => {
 
         // Creating an instance of our event source.
@@ -28,7 +40,7 @@ export default function Main() {
             // Data from the BackEnd is sorted, then stored in the state.
             .then(resJSON => setRooms(resJSON.sort((a, b) => a.room - b.room)))
             .catch(err => console.log(err))
-        
+
         // Listening for messages from the Back-End using Server-Sent Events.
         /*eventSource.onmessage = function(event) {
             console.log(event)
@@ -38,10 +50,14 @@ export default function Main() {
         }*/
     }, [])
 
+    // useEffect hook for saving selected status to localStorage. Objects must be -JSON- stringified!
+    useEffect(() => window.localStorage.setItem('selected', JSON.stringify(selected)), [selected])
+    //window.localStorage.clear()         // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
+
     return (
         <div id="main">
-            <RoomList rooms={rooms} />
-            <Map Data={rooms} />
+            <RoomList rooms={rooms} selected={selected} />
+            <Map Data={rooms} setSelected={setSelected} />
         </div>
     )
 }
