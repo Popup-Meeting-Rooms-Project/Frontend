@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 /*
 FONTS:
 font-family: 'Merriweather', serif;
@@ -12,20 +12,18 @@ font-family: 'Montserrat', sans-serif;
 */
 
 :root {
-  --color-white:#FFFFFF;
-  --color-yellow:#FFD700;
-  --color-black:#0B0500;
-  --color-blue:#148ab3;
-  --color-grey:#e4e4e2;
+  --color-white: #ffffff;
+  --color-yellow: #ffd700;
+  --color-black: #0b0500;
+  --color-blue: #148ab3;
+  --color-grey: #e4e4e2;
   --status-color: #ff8c00;
 }
 
-
 body {
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 
 #App {
   text-align: center;
@@ -34,20 +32,53 @@ padding: 0;
 /* Header css*/
 
 #top {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Merriweather", sans-serif;
   font-weight: lighter;
   position: relative;
-  background-color: var(--color-grey);
-  color: var(--color-black);
-  padding: 0.33em;
+  background-color: var(--color-blue);
+  padding: 1rem;
+  color: white;
+  padding-bottom: 2rem;
+}
+
+#header-background {
+  position: absolute;
+  top: -45%;
+  left: -2rem;
+  height: 145%;
+  width: auto;
+}
+
+#header-line {
+  position: absolute;
+  top: 0;
+  left: 21rem;
+  width: 1px;
+  height: 100%;
+  background-color: white;
+  bottom: 100%;
+}
+
+#light {
+  font-weight: bold;
+}
+
+#dark {
+  font-weight: lighter;
 }
 
 #top-row {
   display: flex;
 }
 
+#top-row h2 {
+  padding-left: 6rem;
+  cursor: pointer;
+}
 
 #bottom-row {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
   display: flex;
 }
 
@@ -61,33 +92,32 @@ padding: 0;
 #time {
   position: absolute;
   right: 0.33em;
-  float:right;
+  float: right;
   margin: 0.33em;
 }
 
 #subtitle {
-  float:left;
+  float: left;
   margin: 0.33em;
 }
 
 #date {
-  float:right;
+  float: right;
   position: absolute;
   right: 0.33em;
   margin: 0.33em;
 }
-
 
 /* Main css*/
 
 #main {
   display: grid;
   padding-left: 2rem;
-  grid-template-columns: 50% 50%;     /* This handles the list and map width! */
+  grid-template-columns: 50% 50%; /* This handles the list and map width! */
 }
 
 #label {
-  display:inline;
+  display: inline;
   padding: 0 1rem;
 }
 
@@ -136,7 +166,7 @@ padding: 0;
 }
 
 #statusColor {
-  color:#ff8c00;
+  color: #ff8c00;
 }
 
 #inUse {
@@ -148,7 +178,7 @@ padding: 0;
 }
 
 #redCircle {
-  content: '';
+  content: "";
   position: absolute;
   top: 1.2rem;
   left: 1rem;
@@ -159,7 +189,7 @@ padding: 0;
 }
 
 #greenCircle {
-  content: '';
+  content: "";
   position: absolute;
   top: 1.2rem;
   left: 1rem;
@@ -173,7 +203,7 @@ padding: 0;
 
 #map {
   position: relative;
-  padding: 2rem 0 0 5rem; 
+  padding: 2rem 0 0 5rem;
 }
 
 .floorMap {
@@ -182,7 +212,7 @@ padding: 0;
 }
 
 .floorLabel {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 1.8rem;
   width: 100%;
