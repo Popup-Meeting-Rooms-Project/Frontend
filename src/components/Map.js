@@ -38,7 +38,7 @@ export default function Map({Data}) {
         let boxes = []
 
         for (let i = mapValues.length; i > 0; i--) {
-            boxes.push(<div className="floorLabel" key={i}>{changeColor(mapValues[i-1].freeRooms)}{i}th floor</div>)
+            boxes.push(<div className="floorLabel" key={i}><div id="floorNumber">{i}. </div><div id="mapFloor"> floor </div>{changeColor(mapValues[i-1].freeRooms)}</div>)
         }
 
         return boxes

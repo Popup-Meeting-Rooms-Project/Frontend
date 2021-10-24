@@ -216,6 +216,7 @@ body {
   font-weight: bold;
   font-size: 1.8rem;
   width: 100%;
+  display: inline;
 }
 
 .floorMap {
@@ -228,6 +229,31 @@ body {
   margin-top: -0.4rem;
   color: white;
   border: 2px solid black;
+}
+
+#floorNumber {
+  font-family: "Merriweather", sans-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  display: inline;
+}
+
+#mapFloor {
+  font-family: "Merriweather", sans-serif;
+  font-size: 1.5rem;
+  display: inline;
+}
+
+#availableRoomsGreen {
+  font-family: "Merriweather", sans-serif;
+  font-weight: lighter;
+  color: #22C098;
+}
+
+#availableRoomsRed {
+  font-family: "Merriweather", sans-serif;
+  font-weight: lighter;
+  color: #D26360;
 }
 
 #floorboxGreen {
