@@ -262,6 +262,14 @@ body {
   margin-block-start:0;
 }
 
+#mapIcon {
+  padding-top: 2rem;
+  position: absolute;
+  right: 15rem;
+  height: 3rem;
+  width: 3rem;
+}
+
 #floorboxGreen {
   padding: 1rem;
   margin-right: 1rem;
