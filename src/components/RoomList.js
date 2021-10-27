@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react'
 
-import EventAvailableIcon from '@mui/icons-material/EventAvailable'
-import EventBusyIcon from '@mui/icons-material/EventBusy'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 
 import Table from './Table'
@@ -39,18 +39,17 @@ function RoomList({rooms, selected}) {
     }
   }, [rooms, selected, checked])
 
-
-  // Setting status icons (uses Material icons, can be changed to another icon library!)
-  const setStatus = (row) => {
+   // Setting status icons (uses Material icons, can be changed to another icon library!)
+   const setStatus = (row) => {
     if (row.value === false) {
       return ( 
               <Tooltip title="Occupied">
-                 <EventBusyIcon color='error' />
+                 <CancelIcon style={{color: '#EF6E52'}} />
               </Tooltip>
       )} else {
       return ( 
               <Tooltip title="Available">
-                <EventAvailableIcon style={{color: '#03D610'}} />
+                <CheckCircleIcon style={{color: '#19D492'}} />
               </Tooltip>
       )}
   }

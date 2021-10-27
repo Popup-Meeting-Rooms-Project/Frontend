@@ -28,8 +28,8 @@ const StyledTableCell = styled(TableCell)( {
 
 // Style for tablerows
 const StyledTableRow = styled(TableRow)( {
-      backgroundColor: '#f0f0ee',
-      borderColor:'#161616',
+      backgroundColor: '#F9FCFD',
+      borderColor:'#003E51',
     // hide last border
     '&:last-child td, &:last-child th': {
       border: 0,
