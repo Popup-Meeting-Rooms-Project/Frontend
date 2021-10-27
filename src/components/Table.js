@@ -24,7 +24,7 @@ const StyledTableCell = styled(TableCell)( {
     [`&.${tableCellClasses.body}`]: {
         textAlign: 'center',
     },
-});
+})
 
 // Style for tablerows
 const StyledTableRow = styled(TableRow)( {
@@ -34,10 +34,10 @@ const StyledTableRow = styled(TableRow)( {
     '&:last-child td, &:last-child th': {
       border: 0,
     },
-});
+})
 
 // Creating a default prop getter
-const defaultPropGetter = () => ({});
+const defaultPropGetter = () => ({})
 
 
 // We pass columns and data to build the table with as props

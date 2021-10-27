@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react'
 
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import CancelIcon from '@mui/icons-material/Cancel'
 import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 
 import Table from './Table'

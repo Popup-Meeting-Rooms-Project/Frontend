@@ -28,8 +28,7 @@ export default function Main() {
 
     //window.localStorage.clear()         // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
     
-
-    // Functio for updating rooms data
+    // Function for updating rooms data
     /*const updateStatus = (data) => {
         setRooms(rooms =>
             rooms.map(room =>
@@ -41,7 +40,7 @@ export default function Main() {
     useEffect(() => {
 
         // Creating an instance of our event source.
-        //const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
+        const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
         
         fetch(process.env.REACT_APP_API_URL)
             .then(res => res.status === 200 ? res.json() : console.log(res))
@@ -50,12 +49,12 @@ export default function Main() {
             .catch(err => console.log(err))
 
         // Listening for messages from the Back-End using Server-Sent Events.
-        /*eventSource.onmessage = function(event) {
+        eventSource.onmessage = function(event) {
             console.log(event)
             //const dataParsed = JSON.parse(event.data)
             //updateData(dataParsed)
             // updateStatus(JSON.parse(event.data)) THIS COULD BE ONE LINE ONLY
-        }*/
+        }
     }, [])
 
 

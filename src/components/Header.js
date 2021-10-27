@@ -66,7 +66,7 @@ export default function Header() {
 
     return (
         <div id="top">
-            <img id="header-background" src={headerPic}/>
+            <img id="header-background" src={headerPic} alt="" />
             <div id="top-row">
                 <h1 id="title">Helsinki Office</h1>
                 <div id="header-line"/>
