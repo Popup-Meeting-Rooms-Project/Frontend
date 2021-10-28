@@ -24,7 +24,7 @@ Data must be in JSON form and follow these models:
 - Status update
 ```
 {
-  "room_number": string,
+  "id": string,
   "detected": boolean
 }
 ```
