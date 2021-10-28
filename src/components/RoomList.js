@@ -30,10 +30,10 @@ function RoomList({rooms, selected}) {
   const data = useMemo(() => {
     if (checked) {
       return selected.length === 0
-        ? rooms.filter(room => room.status === checked)
-        : rooms.filter(room => selected.includes(room.floor) && room.status === checked)
+        ? rooms.filter(room => room.detected !== checked)
+        : rooms.filter(room => selected.includes(room.building_floor) && room.detected !== checked)
     } else if (selected && selected.length !== 0) {
-      return rooms.filter(room => (selected.includes(room.floor)))
+      return rooms.filter(room => (selected.includes(room.building_floor)))
     } else {
       return rooms
     }
