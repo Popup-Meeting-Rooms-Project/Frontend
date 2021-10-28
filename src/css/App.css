@@ -217,6 +217,7 @@ body {
   font-size: 1.8rem;
   width: 100%;
   margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 .floorMap {
@@ -251,6 +252,7 @@ body {
   color: #22C098;
   margin-left: 6rem;
   margin-block-start:0;
+  margin-block-end: 0;
 }
 
 #availableRoomsRed {
@@ -260,6 +262,7 @@ body {
   color: #D26360;
   margin-left: 6rem;
   margin-block-start:0;
+  margin-block-end: 0;
 }
 
 #mapIcon {
