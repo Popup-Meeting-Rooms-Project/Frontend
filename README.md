@@ -13,10 +13,10 @@ Data must be in JSON form and follow these models:
 - Room Object (must at least contain the following, may contain additional fields which will be disregarded).
 ```
 {
-  "roomId": string,
-  "room": number,
-  "floor": number,
-  "status": boolean
+  "id": string,
+  "room_number": number,
+  "building_floor": number,
+  "detected": boolean
  }
  ```
   
@@ -24,8 +24,8 @@ Data must be in JSON form and follow these models:
 - Status update
 ```
 {
-  "roomId": string,
-  "status": boolean
+  "room_number": string,
+  "detected": boolean
 }
 ```
 
