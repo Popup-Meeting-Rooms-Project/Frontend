@@ -14,13 +14,14 @@ export default function Map({Data}) {
         Data.forEach(entry => {
 
             // If the floor isn't in the array yet, add it.
-            if (!toSet.some(o => o.floor === entry.floor)) { toSet.push({floor: entry.floor, freeRooms: 0}) }
-
-            // If the room is available, add it to the count.
-            if (entry.status === true) {
-                toSet[entry.floor - 1].freeRooms++
+            if (!toSet.some(o => o.building_floor === entry.building_floor)) {
+                toSet.push({building_floor: entry.building_floor, freeRooms: 0})
             }
 
+            // If the room is available, add it to the count.
+            if (entry.detected === false) {
+                toSet[entry.building_floor - 1].freeRooms++
+            }
         })
 
         setMapValues(toSet)

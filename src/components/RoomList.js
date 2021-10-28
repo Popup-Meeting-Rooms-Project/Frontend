@@ -41,7 +41,7 @@ function RoomList({rooms, selected}) {
 
    // Setting status icons (uses Material icons, can be changed to another icon library!)
    const setStatus = (row) => {
-    if (row.value === false) {
+    if (row.value === true) {
       return ( 
               <Tooltip title="Occupied">
                  <CancelIcon style={{color: '#EF6E52'}} />
@@ -58,13 +58,13 @@ function RoomList({rooms, selected}) {
   const columns = useMemo(() => [
     {
       Header: 'Floor',
-      accessor: 'floor',
+      accessor: 'building_floor',
     },{
       Header: 'Room No',
-      accessor: 'room',
+      accessor: 'room_number',
     },{
       Header: 'Status',
-      accessor: 'status',
+      accessor: 'detected',
       Cell: row => setStatus(row),
     },/*{
       Header: 'Temperature',
