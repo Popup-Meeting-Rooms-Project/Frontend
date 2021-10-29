@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-
 import '../css/App.css'
+import headerPic from "../assets/headerPic.webp";
 
 const formatDate = (date) => {
     let month;
@@ -66,8 +66,11 @@ export default function Header() {
 
     return (
         <div id="top">
+            <img id="header-background" src={headerPic} alt="" />
             <div id="top-row">
-                <h1 id="title">eficode - Helsinki Office</h1>
+                <h1 id="title">Helsinki Office</h1>
+                <div id="header-line"/>
+                <h2 id="mode"><span id="light">Light</span> / <span id="dark">Dark</span></h2>
                 <h1 id="time">{time}</h1>
             </div>
             <div id="bottom-row">

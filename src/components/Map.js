@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { GrMapLocation } from 'react-icons/gr';
+import { Tooltip } from '@mui/material';
 
 export default function Map({Data}) {
 
@@ -12,13 +14,14 @@ export default function Map({Data}) {
         Data.forEach(entry => {
 
             // If the floor isn't in the array yet, add it.
-            if (!toSet.some(o => o.floor === entry.floor)) { toSet.push({floor: entry.floor, freeRooms: 0}) }
-
-            // If the room is available, add it to the count.
-            if (entry.status === true) {
-                toSet[entry.floor - 1].freeRooms++
+            if (!toSet.some(o => o.building_floor === entry.building_floor)) {
+                toSet.push({building_floor: entry.building_floor, freeRooms: 0})
             }
 
+            // If the room is available, add it to the count.
+            if (entry.detected === false) {
+                toSet[entry.building_floor - 1].freeRooms++
+            }
         })
 
         setMapValues(toSet)
@@ -28,9 +31,9 @@ export default function Map({Data}) {
 
     const changeColor = (amount) => {
         if (amount === 0) {
-           return <p id="floorboxRed">{amount} available rooms</p>
+           return <p id="availableRoomsRed">{amount} available rooms</p>
         } else {
-            return <p id="floorboxGreen">{amount} available rooms</p>
+            return <p id="availableRoomsGreen">{amount} available rooms</p>
         }
     }
 
@@ -38,7 +41,7 @@ export default function Map({Data}) {
         let boxes = []
 
         for (let i = mapValues.length; i > 0; i--) {
-            boxes.push(<div className="floorLabel" key={i}>{changeColor(mapValues[i-1].freeRooms)}{i}th floor</div>)
+            boxes.push(<div key={i}><p className="floorLabel" key={i}><span id="floorNumber">{i}. </span><span id="mapFloor">floor</span><Tooltip title="Floor map"><span><GrMapLocation id="mapIcon" /></span></Tooltip></p>{changeColor(mapValues[i-1].freeRooms)}</div>)
         }
 
         return boxes
