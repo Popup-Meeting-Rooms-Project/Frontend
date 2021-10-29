@@ -11,7 +11,7 @@ It communicates with the Back End of our project (found [here](https://github.co
 
 Data must be in JSON form and follow these models:
 - Room Object (must at least contain the following, may contain additional fields which will be disregarded).
-```
+```json
 {
   "id": string,
   "room_number": number,
@@ -22,7 +22,7 @@ Data must be in JSON form and follow these models:
   
 
 - Status update
-```
+```json
 {
   "id": string,
   "detected": boolean
