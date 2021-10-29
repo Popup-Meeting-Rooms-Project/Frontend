@@ -1,82 +1,79 @@
 import { useEffect, useState } from 'react'
 import '../css/App.css'
-import headerPic from "../assets/headerPic.webp";
+import headerPic from '../assets/headerPic.webp'
 
 const formatDate = (date) => {
-    let month;
+  let month
 
-    switch (date.getMonth()) {
-        case 0:
-            month = 'January';
-            break;
-        case 1:
-            month = 'February';
-            break;
-        case 2:
-            month = 'March';
-            break;
-        case 3:
-            month = 'April';
-            break;
-        case 4:
-            month = 'May';
-            break;
-        case 5:
-            month = 'June';
-            break;
-        case 6:
-            month = 'July';
-            break;
-        case 7:
-            month = 'August';
-            break;
-        case 8:
-            month = 'September';
-            break;
-        case 9:
-            month = 'October';
-            break;
-        case 10:
-            month = 'November';
-            break;
-        case 11:
-            month = 'December';
-            break;
-        default:
-    }
+  switch (date.getMonth()) {
+    case 0:
+      month = 'January'
+      break
+    case 1:
+      month = 'February'
+      break
+    case 2:
+      month = 'March'
+      break
+    case 3:
+      month = 'April'
+      break
+    case 4:
+      month = 'May'
+      break
+    case 5:
+      month = 'June'
+      break
+    case 6:
+      month = 'July'
+      break
+    case 7:
+      month = 'August'
+      break
+    case 8:
+      month = 'September'
+      break
+    case 9:
+      month = 'October'
+      break
+    case 10:
+      month = 'November'
+      break
+    case 11:
+      month = 'December'
+      break
+    default:
+  }
 
-    return date.getDate() + " " + month + " " + date.getFullYear();
+  return date.getDate() + ' ' + month + ' ' + date.getFullYear()
 }
 
 const formatTime = (date) =>
-    (date.getMinutes() > 9) ? date.getHours() + ":" + date.getMinutes() : date.getHours() + ":0" + date.getMinutes();
-
+  (date.getMinutes() > 9) ? date.getHours() + ':' + date.getMinutes() : date.getHours() + ':0' + date.getMinutes()
 
 export default function Header() {
-    const [current, setCurrent] = useState(new Date())
-    const date = formatDate(current);
-    const time = formatTime(current);
+  const [current, setCurrent] = useState(new Date())
+  const date = formatDate(current);
+  const time = formatTime(current);
 
-    useEffect(() => {}, [])
+  useEffect(() => {}, [])
 
-    useEffect(() => {
-        setInterval(() => setCurrent(new Date()), 30000);
-      }, []);
+  useEffect(() => {
+    setInterval(() => setCurrent(new Date()), 30000);
+  }, [])
 
-
-    return (
-        <div id="top">
-            <img id="header-background" src={headerPic} alt="" />
-            <div id="top-row">
-                <h1 id="title">Helsinki Office</h1>
-                <div id="header-line"/>
-                <h2 id="mode"><span id="light">Light</span> / <span id="dark">Dark</span></h2>
-                <h1 id="time">{time}</h1>
-            </div>
-            <div id="bottom-row">
-                <h2 id="subtitle">Popup meeting rooms</h2>
-                <h2 id="date">{date}</h2>
-            </div>
-        </div>
-    )
+  return (
+    <div id='top'>
+      <img id='header-background' src={headerPic} alt='' />
+      <div id='top-row'>
+        <h1 id='title'>Helsinki Office</h1>
+        <div id='header-line'/>
+        <h2 id='mode'><span id='light'>Light</span> / <span id='dark'>Dark</span></h2>
+        <h1 id='time'>{time}</h1>
+      </div>
+      <div id='bottom-row'>
+        <h2 id='subtitle'>Popup meeting rooms</h2>              <h2 id="date">{date}</h2>
+      </div>
+    </div>
+  )
 }

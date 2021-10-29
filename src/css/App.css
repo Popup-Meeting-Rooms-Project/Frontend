@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 /*
 FONTS:
 font-family: 'Merriweather', serif;
@@ -12,7 +13,7 @@ font-family: 'Montserrat', sans-serif;
 */
 
 :root {
-  --color-white: #ffffff;
+  --color-white: #ffff;
   --color-yellow: #ffd700;
   --color-black: #0b0500;
   --color-blue: #148ab3;
@@ -29,7 +30,7 @@ body {
   text-align: center;
 }
 
-/* Header css*/
+/* Header css */
 
 #top {
   font-family: "Merriweather", sans-serif;
@@ -108,7 +109,7 @@ body {
   margin: 0.33em;
 }
 
-/* Main css*/
+/* Main css */
 
 #main {
   display: grid;
@@ -155,7 +156,6 @@ body {
 }
 
 #status {
-  float: right;
   display: flex;
   float: inline-end;
   margin-left: 81%;
@@ -206,11 +206,6 @@ body {
   padding: 2rem 0 0 5rem;
 }
 
-.floorMap {
-  border-color: black;
-  height: 1rem;
-}
-
 .floorLabel {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -249,7 +244,7 @@ body {
   font-family: "Merriweather", sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
-  color: #22C098;
+  color: #22c098;
   margin-left: 6rem;
   margin-block-start:0;
   margin-block-end: 0;
@@ -259,9 +254,9 @@ body {
   font-family: "Merriweather", sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
-  color: #D26360;
+  color: #d26360;
   margin-left: 6rem;
-  margin-block-start:0;
+  margin-block-start: 0;
   margin-block-end: 0;
 }
 

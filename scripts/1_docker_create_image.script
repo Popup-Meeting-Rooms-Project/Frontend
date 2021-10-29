@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Pull latest nginx image and remove old ones
+sudo docker pull nginx
+sudo docker image prune
+
+# Set first the path to the directory containing the dockerfile and the build dir (use absolute path!)
+cd /home/user/.../
+sudo docker build -t frontend-app .
