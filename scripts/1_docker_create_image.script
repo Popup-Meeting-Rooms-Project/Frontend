@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Pull latest nginx image
+docker pull nginx
+
+# Set first the path to the directory containing the dockerfile and the build dir (use absolute path!)
+cd /home/user/.../
+sudo docker build -t frontend-app .
