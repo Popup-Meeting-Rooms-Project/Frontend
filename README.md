@@ -1,8 +1,6 @@
 # PopUp Meeting Rooms Project - Front End Web Application
 
 
-[![GitHub Super-Linter](https://github.com/Popup-Meeting-Rooms-Project/Frontend/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-
 ## Documentation
 
 All documentation will be stored in the `docs` folder of the repository.
