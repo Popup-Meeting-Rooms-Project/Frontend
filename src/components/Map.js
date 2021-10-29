@@ -41,7 +41,7 @@ export default function Map({Data}) {
         let boxes = []
 
         for (let i = mapValues.length; i > 0; i--) {
-            boxes.push(<div><p className="floorLabel" key={i}><span id="floorNumber">{i}. </span><span id="mapFloor">floor</span><Tooltip title="Floor map"><GrMapLocation id="mapIcon" /></Tooltip></p>{changeColor(mapValues[i-1].freeRooms)}</div>)
+            boxes.push(<div key={i}><p className="floorLabel" key={i}><span id="floorNumber">{i}. </span><span id="mapFloor">floor</span><Tooltip title="Floor map"><span><GrMapLocation id="mapIcon" /></span></Tooltip></p>{changeColor(mapValues[i-1].freeRooms)}</div>)
         }
 
         return boxes

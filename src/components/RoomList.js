@@ -44,7 +44,7 @@ function RoomList({rooms, selected}) {
     if (row.value === true) {
       return ( 
               <Tooltip title="Occupied">
-                 <CancelIcon style={{color: '#EF6E52'}} />
+                <CancelIcon style={{color: '#EF6E52'}} />
               </Tooltip>
       )} else {
       return ( 
