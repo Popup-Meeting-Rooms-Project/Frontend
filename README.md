@@ -1,5 +1,6 @@
 # PopUp Meeting Rooms Project - Front End Web Application
 
+
 ## Documentation
 
 All documentation will be stored in the `docs` folder of the repository.
