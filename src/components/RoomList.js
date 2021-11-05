@@ -60,8 +60,8 @@ function RoomList ({ rooms, selected }) {
       Header: 'Floor',
       accessor: 'building_floor',
     }, {
-      Header: 'Room No',
-      accessor: 'room_number',
+      Header: 'Room Name',
+      accessor: 'room_name',
     }, {
       Header: 'Status',
       accessor: 'detected',

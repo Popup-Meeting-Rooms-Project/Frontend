@@ -37,21 +37,21 @@ export default function Main() {
   // useEffect hook for data handling, runs only at first. Back-End URLs are stored in env variables.
   useEffect(() => {
     // Creating an instance of our event source.
-    // const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
+    const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
 
-  fetch(process.env.REACT_APP_API_URL)
+    fetch(process.env.REACT_APP_API_URL)
       .then(res => res.status === 200 ? res.json() : console.log(res))
-      // Data from the BackEnd is sorted, then stored in the state.
-      .then(resJSON => setRooms(resJSON.sort((a, b) => a.room_number - b.room_number)))
+      .then(resJSON => setRooms(resJSON))
       .catch(err => console.log(err))
 
     // Listening for messages from the Back-End using Server-Sent Events.
-    // eventSource.onmessage = function(event) {
-    // console.log(event)
-    // const dataParsed = JSON.parse(event.data)
-    // updateData(dataParsed)
-    // updateStatus(JSON.parse(event.data)) THIS COULD BE ONE LINE ONLY
-    // }
+    eventSource.onmessage = function(event) {
+      console.log(event)
+      // const dataParsed = JSON.parse(event.data)
+      // console.log(dataParsed)
+      // updateData(dataParsed)
+      // updateStatus(JSON.parse(event.data)) THIS COULD BE ONE LINE ONLY
+    }
   }, [])
 
   return (
