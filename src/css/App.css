@@ -31,15 +31,17 @@ body {
   background-color: var(--color-blue);
   padding: 1rem;
   color: var(--color-white);
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
+  box-shadow: 0px 10px lightblue;
+  margin-bottom: 0.2rem;
 }
 
 .header-background {
   position: absolute;
   top: -45%;
   left: -2rem;
-  height: 145%;
-  width: auto;
+  height: auto;
+  width: 40rem;
   pointer-events: none;
 }
 
@@ -49,7 +51,7 @@ body {
   left: 21rem;
   width: 1px;
   height: 100%;
-  background-color: var(--color-white);
+  background-color: lightblue;
   bottom: 100%;
 }
 
@@ -123,8 +125,27 @@ body {
 .main {
   display: grid;
   padding-left: 2rem;
-  grid-template-columns: 50% 50%; /* This handles the list and map width! */
+  grid-template-columns: 55% 40%; /* This handles the list and map width! */
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 500px) {
+  .time {
+    display: none;
+  }
+  .date {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header-background {
+    height: 145%;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .main {
     display: grid;
