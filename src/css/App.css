@@ -116,6 +116,17 @@ body {
   padding-left: 2rem;
   grid-template-columns: 50% 50%; /* This handles the list and map width! */
 }
+@media screen and (max-width: 960px) {
+
+  #main {
+    display: grid;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    grid-template-columns: 100%;
+  }
+}
+
+
 
 #label {
   display: inline;

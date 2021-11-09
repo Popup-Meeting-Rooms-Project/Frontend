@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { GrMapLocation } from 'react-icons/gr'
-import { Tooltip } from '@mui/material'
 
 export default function Map({ Data }) {
   const [mapValues, setMapValues] = useState([])
@@ -40,9 +38,6 @@ export default function Map({ Data }) {
           <p className='floorLabel' key={i}>
             <span id='floorNumber'>{i}. </span>
             <span id='mapFloor'>floor</span>
-            <Tooltip title='Floor map'>
-              <span><GrMapLocation id='mapIcon' /></span>
-            </Tooltip>
           </p>
           {changeColor(mapValues[i-1].freeRooms)}
         </div>)

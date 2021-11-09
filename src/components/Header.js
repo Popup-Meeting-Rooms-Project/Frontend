@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import '../css/App.css'
 import headerPic from '../assets/headerPic.webp'
+import { Breakpoint } from 'react-socks';
+
 
 const formatDate = (date) => {
   let month
@@ -68,11 +70,16 @@ export default function Header() {
       <div id='top-row'>
         <h1 id='title'>Helsinki Office</h1>
         <div id='header-line'/>
+        <Breakpoint medium up>
         <h2 id='mode'><span id='light'>Light</span> / <span id='dark'>Dark</span></h2>
+        </Breakpoint>
         <h1 id='time'>{time}</h1>
       </div>
       <div id='bottom-row'>
-        <h2 id='subtitle'>Popup meeting rooms</h2>              <h2 id="date">{date}</h2>
+        <h2 id='subtitle'>Popup meeting rooms</h2>   
+        <Breakpoint medium up>
+        <h2 id="date">{date}</h2>  
+        </Breakpoint>
       </div>
     </div>
   )
