@@ -2,7 +2,16 @@ import { useEffect, useState } from 'react'
 import '../css/App.css'
 import headerPic from '../assets/headerPic.webp'
 import { Breakpoint } from 'react-socks';
+import { DarkMode } from '@mui/icons-material';
 
+
+const lightMode = () => {
+  console.log("Light mode enabled")
+}
+
+const darkMode = () => {
+  console.log("Dark mode enabled")
+}
 
 const formatDate = (date) => {
   let month
@@ -50,6 +59,8 @@ const formatDate = (date) => {
   return date.getDate() + ' ' + month + ' ' + date.getFullYear()
 }
 
+
+
 const formatTime = (date) =>
   (date.getMinutes() > 9) ? date.getHours() + ':' + date.getMinutes() : date.getHours() + ':0' + date.getMinutes()
 
@@ -65,20 +76,20 @@ export default function Header() {
   }, [])
 
   return (
-    <div id='top'>
-      <img id='header-background' src={headerPic} alt='' />
-      <div id='top-row'>
-        <h1 id='title'>Helsinki Office</h1>
-        <div id='header-line'/>
+    <div class='top'>
+      <img class='header-background' src={headerPic} alt='' />
+      <div class='top-row'>
+        <h1 class='title'>Helsinki Office</h1>
+        <div class='header-line'/>
         <Breakpoint medium up>
-        <h2 id='mode'><span id='light'>Light</span> / <span id='dark'>Dark</span></h2>
+        <h2 class='mode' ><span class='light' onClick={() => lightMode()}>Light</span> / <span class='dark' onClick={() => darkMode()}>Dark</span></h2>
         </Breakpoint>
-        <h1 id='time'>{time}</h1>
+        <h1 class='time'>{time}</h1>
       </div>
-      <div id='bottom-row'>
-        <h2 id='subtitle'>Popup meeting rooms</h2>   
+      <div class='bottom-row'>
+        <h2 class='subtitle'>Popup meeting rooms</h2>   
         <Breakpoint medium up>
-        <h2 id="date">{date}</h2>  
+        <h2 class="date">{date}</h2>  
         </Breakpoint>
       </div>
     </div>

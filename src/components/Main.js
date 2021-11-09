@@ -57,7 +57,7 @@ export default function Main() {
   }, [])
 
   return (
-    <div id='main'>
+    <div class='main'>
       <RoomList rooms={rooms} selected={selected} />
       <Breakpoint medium up>
         <Map Data={rooms} setSelected={setSelected} />

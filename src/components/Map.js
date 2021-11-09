@@ -23,9 +23,9 @@ export default function Map({ Data }) {
 
   const changeColor = (amount) => {
     if (amount === 0) {
-      return <p id='availableRoomsRed'>{amount} available rooms</p>
+      return <p class='availableRoomsRed'>{amount} available rooms</p>
     } else {
-      return <p id='availableRoomsGreen'>{amount} available rooms</p>
+      return <p class='availableRoomsGreen'>{amount} available rooms</p>
     }
   }
 
@@ -36,8 +36,8 @@ export default function Map({ Data }) {
       boxes.push(
         <div key={i}>
           <p className='floorLabel' key={i}>
-            <span id='floorNumber'>{i}. </span>
-            <span id='mapFloor'>floor</span>
+            <span class='floorNumber'>{i}. </span>
+            <span class='mapFloor'>floor</span>
           </p>
           {changeColor(mapValues[i-1].freeRooms)}
         </div>)
@@ -46,7 +46,7 @@ export default function Map({ Data }) {
   }
 
   return (
-    <div id='map'>
+    <div class='map'>
       {mapBuilder()}
     </div>
   )
