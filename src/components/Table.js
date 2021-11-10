@@ -1,7 +1,6 @@
 import { useTable } from 'react-table'
 import { Table as MaterialTable, TableBody, TableHead, TableRow, TableCell, tableCellClasses } from '@mui/material'
 import { styled } from '@mui/system'
-import { BoltRounded } from '@mui/icons-material'
 
 // This is a simple table component
 

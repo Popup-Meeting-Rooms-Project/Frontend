@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import RoomList from './RoomList'
 import Map from './Map'
 
-import { Breakpoint, BreakpointProvider } from 'react-socks';
+import { Breakpoint } from 'react-socks'
 
 
 export default function Main() {
@@ -57,10 +57,10 @@ export default function Main() {
   }, [])
 
   return (
-    <div class='main'>
+    <div className='main'>
       <RoomList rooms={rooms} selected={selected} />
       <Breakpoint medium up>
-        <Map Data={rooms} setSelected={setSelected} />
+        <Map Data={rooms} selected={selected} setSelected={setSelected} />
       </Breakpoint>
     </div>
   )

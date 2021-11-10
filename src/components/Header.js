@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Breakpoint } from 'react-socks'
+import { DarkMode } from '@mui/icons-material'
 import '../css/App.css'
 import headerPic from '../assets/headerPic.webp'
-import { Breakpoint } from 'react-socks';
-import { DarkMode } from '@mui/icons-material';
 
 
 const lightMode = () => {
@@ -76,20 +76,20 @@ export default function Header() {
   }, [])
 
   return (
-    <div class='top'>
-      <img class='header-background' src={headerPic} alt='' />
-      <div class='top-row'>
-        <h1 class='title'>Helsinki Office</h1>
-        <div class='header-line'/>
+    <div className='top'>
+      <img className='header-background' src={headerPic} alt='' />
+      <div className='top-row'>
+        <h1 className='title'>Helsinki Office</h1>
+        <div className='header-line'/>
         <Breakpoint medium up>
-        <h2 class='mode' ><span class='light' onClick={() => lightMode()}>Light</span> / <span class='dark' onClick={() => darkMode()}>Dark</span></h2>
+        <h2 className='mode' ><span className='light' onClick={() => lightMode()}>Light</span> / <span className='dark' onClick={() => darkMode()}>Dark</span></h2>
         </Breakpoint>
-        <h1 class='time'>{time}</h1>
+        <h1 className='time'>{time}</h1>
       </div>
-      <div class='bottom-row'>
-        <h2 class='subtitle'>Popup meeting rooms</h2>   
+      <div className='bottom-row'>
+        <h2 className='subtitle'>Popup meeting rooms</h2>   
         <Breakpoint medium up>
-        <h2 class="date">{date}</h2>  
+        <h2 className="date">{date}</h2>  
         </Breakpoint>
       </div>
     </div>

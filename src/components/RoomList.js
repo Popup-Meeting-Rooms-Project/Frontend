@@ -30,7 +30,7 @@ function RoomList ({ rooms, selected }) {
         ? rooms.filter(room => room.detected !== checked)
         : rooms.filter(room => selected.includes(room.building_floor) && room.detected !== checked)
     } else if (selected && selected.length !== 0) {
-      return rooms.filter(room => (selected.includes(room.building_floor)))
+      return rooms.filter(room => selected.includes(room.building_floor))
     } else {
       return rooms
     }
