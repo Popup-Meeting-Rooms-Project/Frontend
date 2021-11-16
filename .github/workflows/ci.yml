@@ -37,6 +37,7 @@ jobs:
   # Second job in the workflow
   build_and_test:
     name: Test and build release
+    needs: lint
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,7 +47,7 @@ jobs:
         
     defaults:
       run:
-        working-directory: src
+        working-directory: Frontend
 
     steps:
     - name: npm install and build
