@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react'
 import RoomList from './RoomList'
 import Map from './Map'
 
-import { connect } from 'mqtt'
 import { Breakpoint } from 'react-socks'
 
-// This Main component implements MQTT for fetching data updates
+
 export default function Main() {
   // Rooms data will be stored in a state
   const [rooms, setRooms] = useState([])
@@ -30,42 +29,34 @@ export default function Main() {
 
   // window.localStorage.clear() // USEFUL FOR DEBUGGING, TO BE REMOVED LATER
 
-  // Updating rooms status
-  const updateStatus = (data) => {
-    setRooms(rooms =>
-      rooms.map(room =>
-        (room.id === data.id) ? { ...room, detected: data.detected } : room))
-  }
+  // Function for updating rooms data
+  /* const updateStatus = (data) => {
+      setRooms(rooms =>
+          rooms.map(room =>
+              (room.roomNo === data.roomNo) ? { ...room, status: data.status } : room))
+  } */
 
-  // Fetching initial data and updates are handled with useEffect hook.
+  // useEffect hook for data handling, runs only at first. Back-End URLs are stored in env variables.
   useEffect(() => {
+    // Creating an instance of our event source.
+    const eventSource = new EventSource(process.env.REACT_APP_SSE_URL)
 
-    // Back-End URLs are stored in env variables.
-    // Creating MQTT client.
-    const client  = connect(process.env.REACT_APP_MQTT_URL)
-
-    // fetching the full list using the REST API first.
     fetch(process.env.REACT_APP_API_URL)
       .then(res => res.status === 200 ? res.json() : console.log(res))
       .then(resJSON => setRooms(resJSON))
-      // Updates are done via MQTT.
-      .then(() => {
-        if (client) {
-          client.on('connect', () => {        
-            client.subscribe(process.env.REACT_APP_MQTT_TOPIC)
-          })
-          client.on('error', (err) => {
-            console.log('ERROR: ' + err)
-            client.end()
-          })
-          // Message needs to be stringified! Should then be a JSON object (formatted according to docs).
-          client.on('message', (_topic, message, _packet) => updateStatus(JSON.parse(message.toString())))
-        }
-      })
       .catch(err => console.log(err))
+
+    // Listening for messages from the Back-End using Server-Sent Events.
+    eventSource.onmessage = event => {
+      console.log("Got Something!")
+      console.log(event.data)
+      // const dataParsed = JSON.parse(event.data)
+      // console.log(dataParsed)
+      // updateData(dataParsed)
+      // updateStatus(JSON.parse(event.data)) THIS COULD BE ONE LINE ONLY
+    }
   }, [])
 
-  // Data passed as props to both list and floor map
   return (
     <div className='main'>
       <RoomList rooms={rooms} selected={selected} />
