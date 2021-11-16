@@ -47,7 +47,7 @@ jobs:
         
     defaults:
       run:
-        working-directory: Frontend
+        working-directory: ~/
 
     steps:
     - name: Use Node.js ${{ matrix.node-version }}
