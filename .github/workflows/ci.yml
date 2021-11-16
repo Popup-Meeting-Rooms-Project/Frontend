@@ -47,7 +47,7 @@ jobs:
         
     defaults:
       run:
-        working-directory: /
+        working-directory: ./Frontend
 
     steps:
     - name: Use Node.js ${{ matrix.node-version }}
@@ -65,5 +65,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: production-build
-        path: |
-            build
+        path: build
