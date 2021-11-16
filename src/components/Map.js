@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { GrMapLocation } from 'react-icons/gr'
-import { Tooltip } from '@mui/material'
+import { Checkbox } from '@mui/material'
 
-export default function Map({ Data }) {
+export default function Map({ Data, selected, setSelected }) {
   const [mapValues, setMapValues] = useState([])
 
   useEffect(() => {
@@ -10,48 +9,57 @@ export default function Map({ Data }) {
 
     // Since we don't know which floors have rooms in each building, we have to iterate through the array.
     Data.forEach(entry => {
+      let floor = entry.building_floor
+
       // If the floor isn't in the array yet, add it.
-      if (!toSet.some(o => o.building_floor === entry.building_floor)) {
-        toSet.push({building_floor: entry.building_floor, freeRooms: 0})
+      if (!toSet[floor]) {
+        toSet[floor] = {building_floor: floor, freeRooms: 0}
       }
 
       // If the room is available, add it to the count.
       if (entry.detected === false) {
-        toSet[entry.building_floor - 1].freeRooms++
+        toSet[floor].freeRooms++
       }
     })
     setMapValues(toSet)
   }, [Data])
 
-  const changeColor = (amount) => {
+  const changeColor = amount => {
     if (amount === 0) {
-      return <p id='availableRoomsRed'>{amount} available rooms</p>
+      return <p className='available-rooms-red'>{amount} available rooms</p>
     } else {
-      return <p id='availableRoomsGreen'>{amount} available rooms</p>
+      return <p className='available-rooms-green'>{amount} available rooms</p>
     }
   }
+
+  const filterInputHandler = i => selected.includes(i) ? setSelected(selected.filter(floor => floor !== i)) : setSelected([...selected, i])
+
 
   const mapBuilder = () => {
     let boxes = []
 
-    for (let i = mapValues.length; i > 0; i--) {
-      boxes.push(
-        <div key={i}>
-          <p className='floorLabel' key={i}>
-            <span id='floorNumber'>{i}. </span>
-            <span id='mapFloor'>floor</span>
-            <Tooltip title='Floor map'>
-              <span><GrMapLocation id='mapIcon' /></span>
-            </Tooltip>
-          </p>
-          {changeColor(mapValues[i-1].freeRooms)}
-        </div>)
+    for (let i = (mapValues.length - 1); i >= 0; i--) {
+      if (mapValues[i]) {
+        boxes.push(
+          <div key={i}>
+            <p className='floor-label' key={i} floor={i}>
+              <span className='floor-number'>{i}. </span>
+              <span className='map-floor'>floor</span>
+              <Checkbox
+                checked={selected.includes(i)}
+                onChange={_ => filterInputHandler(i)}
+                inputProps={{ 'aria-label': 'Add floor to filter' }}
+              />
+            </p>
+            {changeColor(mapValues[i].freeRooms)}
+          </div>)
+      }
     }
     return boxes
   }
 
   return (
-    <div id='map'>
+    <div className='map'>
       {mapBuilder()}
     </div>
   )

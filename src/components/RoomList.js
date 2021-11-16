@@ -1,5 +1,4 @@
 import { useMemo, useState, useEffect } from 'react'
-
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
 import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
@@ -31,7 +30,7 @@ function RoomList ({ rooms, selected }) {
         ? rooms.filter(room => room.detected !== checked)
         : rooms.filter(room => selected.includes(room.building_floor) && room.detected !== checked)
     } else if (selected && selected.length !== 0) {
-      return rooms.filter(room => (selected.includes(room.building_floor)))
+      return rooms.filter(room => selected.includes(room.building_floor))
     } else {
       return rooms
     }
@@ -60,8 +59,8 @@ function RoomList ({ rooms, selected }) {
       Header: 'Floor',
       accessor: 'building_floor',
     }, {
-      Header: 'Room No',
-      accessor: 'room_number',
+      Header: 'Room Name',
+      accessor: 'room_name',
     }, {
       Header: 'Status',
       accessor: 'detected',

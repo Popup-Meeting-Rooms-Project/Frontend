@@ -15,7 +15,7 @@ Data must be in JSON form and follow these models:
 ```json
 {
   "id": string,
-  "room_number": number,
+  "room_name": string,
   "building_floor": number,
   "detected": boolean
  }

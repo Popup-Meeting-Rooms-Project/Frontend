@@ -1,5 +1,4 @@
 import { useTable } from 'react-table'
-
 import { Table as MaterialTable, TableBody, TableHead, TableRow, TableCell, tableCellClasses } from '@mui/material'
 import { styled } from '@mui/system'
 
@@ -11,28 +10,32 @@ const StyledTableCell = styled(TableCell)( {
     width: '20%',
   },
   [`&.${tableCellClasses.sizeMedium}`]: {
-    padding: '0.4em 0 0.1em 0',
+    padding: '1em 0 0.1em 0',
     minWidth: '34%'
   },
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#FFD700',
+    backgroundColor: '#FFD100',
     color: '#0B0500',
     fontSize: 16,
-    padding: '0.5rem 1.9rem  0.25rem 0',
+    fontFamily: 'merriweather',
+    fontWeight: 'bold',
+    padding: '0.5rem 1.9rem  .45rem 0',
     textAlign: 'center'
   },
   [`&.${tableCellClasses.body}`]: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'merriweather',
   }
 })
 
 // Style for tablerows
 const StyledTableRow = styled(TableRow)( {
-  backgroundColor: '#F9FCFD',
   borderColor: '#003E51',
   // hide last border
   '&:last-child td, &:last-child th': {
+    
     border: 0
+
   }
 })
 
