@@ -25,14 +25,14 @@ body {
 /* Header css */
 
 .top {
-  font-family: "Merriweather", sans-serif;
+  font-family: Merriweather, sans-serif;
   font-weight: lighter;
   position: relative;
   background-color: var(--color-blue);
   padding: 1rem;
   color: var(--color-white);
   padding-bottom: 2.5rem;
-  box-shadow: 0px 10px lightblue;
+  box-shadow: 0 10px lightblue;
   margin-bottom: 0.2rem;
 }
 
@@ -60,6 +60,7 @@ body {
   cursor: pointer;
   text-shadow: 1px 1px black;
 }
+
 .light:hover {
   border: 1px;
   text-shadow: 1px 1px black;
@@ -134,6 +135,7 @@ body {
   .time {
     display: none;
   }
+
   .date {
     display: none;
   }
