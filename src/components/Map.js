@@ -26,9 +26,9 @@ export default function Map({ Data, selected, setSelected }) {
 
   const changeColor = amount => {
     if (amount === 0) {
-      return <p className='availableRoomsRed'>{amount} available rooms</p>
+      return <p className='available-rooms-red'>{amount} available rooms</p>
     } else {
-      return <p className='availableRoomsGreen'>{amount} available rooms</p>
+      return <p className='available-rooms-green'>{amount} available rooms</p>
     }
   }
 
@@ -42,9 +42,9 @@ export default function Map({ Data, selected, setSelected }) {
       if (mapValues[i]) {
         boxes.push(
           <div key={i}>
-            <p className='floorLabel' key={i} floor={i}>
-              <span className='floorNumber'>{i}. </span>
-              <span className='mapFloor'>floor</span>
+            <p className='floor-label' key={i} floor={i}>
+              <span className='floor-number'>{i}. </span>
+              <span className='map-floor'>floor</span>
               <Checkbox
                 checked={selected.includes(i)}
                 onChange={_ => filterInputHandler(i)}

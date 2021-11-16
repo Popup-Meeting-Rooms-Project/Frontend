@@ -162,8 +162,8 @@ body {
   padding: 2rem 0 0 5rem;
 }
 
-.floorLabel {
-  font-family: "Montserrat", sans-serif;
+.floor-label {
+  font-family: Montserrat, sans-serif;
   font-weight: bold;
   font-size: 1.8rem;
   width: 100%;
@@ -171,7 +171,7 @@ body {
   margin-block-start: 0;
 }
 
-.floorMap {
+.floor-map {
   padding: 1rem;
   margin-right: 1rem;
   width: 12rem;
@@ -183,21 +183,21 @@ body {
   border: 2px solid var(--color-black);
 }
 
-.floorNumber {
-  font-family: "Merriweather", sans-serif;
+.floor-number {
+  font-family: Merriweather, sans-serif;
   font-size: 5rem;
   font-weight: bold;
   display: inline-block;
   width: 6rem;
 }
 
-.mapFloor {
-  font-family: "Merriweather", sans-serif;
+.map-floor {
+  font-family: Merriweather, sans-serif;
   font-size: 1.5rem;
 }
 
-.availableRoomsGreen {
-  font-family: "Merriweather", sans-serif;
+.available-rooms-green {
+  font-family: Merriweather, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   color: #22c098;
@@ -206,8 +206,8 @@ body {
   margin-block-end: 0;
 }
 
-.availableRoomsRed {
-  font-family: "Merriweather", sans-serif;
+.available-rooms-red {
+  font-family: Merriweather, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   color: #d26360;
