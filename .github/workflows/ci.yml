@@ -13,7 +13,26 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  lint:
+    name: Run Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Super-Linter
+        uses: github/super-linter/slim@v4.8.1
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILTER_REGEX_INCLUDE: .*src/.*
+          VALIDATE_JAVASCRIPT_STANDARD: false
+
+  # Second job in the workflow
   build_and_test:
     name: Test and build release
     # The type of runner that the job will run on
@@ -37,4 +56,3 @@ jobs:
         name: production-build
         path: |
             build
-            
