@@ -171,29 +171,18 @@ body {
   margin-block-start: 0;
 }
 
-.floor-map {
-  padding: 1rem;
-  margin-right: 1rem;
-  width: 12rem;
-  height: 5rem;
-  display: inline-block;
-  margin-bottom: 1rem;
-  margin-top: -0.4rem;
-  color: var(--color-white);
-  border: 2px solid var(--color-black);
-}
-
 .floor-number {
   font-family: Merriweather, sans-serif;
   font-size: 5rem;
   font-weight: bold;
   display: inline-block;
-  width: 6rem;
+  width: 5.2rem;
 }
 
 .map-floor {
   font-family: Merriweather, sans-serif;
   font-size: 1.5rem;
+  padding-right: 0.5em;
 }
 
 .available-rooms-green {
@@ -201,7 +190,8 @@ body {
   font-size: 1.5rem;
   font-weight: lighter;
   color: #22c098;
-  margin-left: 6rem;
+  margin-left: 2rem;
+  padding-bottom: 1rem;
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -211,7 +201,8 @@ body {
   font-size: 1.5rem;
   font-weight: lighter;
   color: #d26360;
-  margin-left: 6rem;
+  margin-left: 2rem;
+  padding-bottom: 1rem;
   margin-block-start: 0;
   margin-block-end: 0;
 }
