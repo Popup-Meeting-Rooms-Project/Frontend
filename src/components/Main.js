@@ -5,6 +5,21 @@ import Map from './Map'
 
 import { Breakpoint } from 'react-socks'
 
+// We can verify the data is in the correct format before populating, so the app doesn't crash when rendering the components.
+const verifyData = data => {
+  let isValid = true
+  data.forEach(room => {
+    if (!room.id || typeof(room.id) !== 'number') { isValid = false }
+    if (!room.room_name || typeof(room.room_name) !== 'string') { isValid = false }
+    if (!room.building_floor || typeof(room.building_floor) !== 'number') { isValid = false }
+    if (typeof(room.detected) === 'undefined' || typeof(room.detected) !== 'boolean') { isValid = false }
+  })
+  if (!isValid) {
+    console.log('Something is wrong with the source data.')
+  }
+  return isValid
+}
+
 
 export default function Main() {
   // Rooms data will be stored in a state
@@ -43,7 +58,11 @@ export default function Main() {
 
     fetch(process.env.REACT_APP_API_URL)
       .then(res => res.status === 200 ? res.json() : console.log(res))
-      .then(resJSON => setRooms(resJSON))
+      .then(resJSON => {
+        if (resJSON && verifyData(resJSON)) {
+          setRooms(resJSON)
+        }
+      })
       .catch(err => console.log(err))
 
     // Listening for messages from the Back-End using Server-Sent Events.
