@@ -12,14 +12,13 @@ font-family: 'Montserrat', sans-serif;
   --color-icon-opposite-light: #148ab3;
   --color-icon-light: #1f1e1e;
   --color-white-light: #ffff;
-  --color-black-light: #000000;
+  --color-black-light: #000;
   --color-header-light: #148ab3;
   --color-header-shadow-light: #add8e6;
-
   --color-icon-opposite-dark: #1f1e1e;
   --color-icon-dark: #148ab3;
   --color-white-dark: #eeeded;
-  --color-black-dark: #000000;
+  --color-black-dark: #000;
   --color-header-dark: #1f1e1e;
   --color-header-shadow-dark: #4b4a4a;
 }
