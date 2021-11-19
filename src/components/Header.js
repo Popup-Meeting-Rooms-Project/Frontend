@@ -1,17 +1,44 @@
 import { useEffect, useState } from 'react'
 import { Breakpoint } from 'react-socks'
-//import { DarkMode } from '@mui/icons-material'
+import {MdModelTraining} from 'react-icons/md'
 import '../css/App.css'
 import headerPic from '../assets/headerPic.webp'
 
 
-const lightMode = () => {
-  console.log("Light mode enabled")
+
+function getCurrentTheme() {
+  let theme = window.matchMedia('(prefers-color-sceheme: dark)').matches ? 'dark' : 'light';
+  if (localStorage.getItem('room.theme') != null) {
+    theme = localStorage.getItem('room.theme')
+  }
+  return theme;
 }
 
-const darkMode = () => {
-  console.log("Dark mode enabled")
+
+
+function loadTheme(theme) {
+  const root = document.querySelector(':root');
+  
+ 
+  root.setAttribute('color-scheme' , `${theme}`)
 }
+
+const changeTheme = () => {
+  let theme = getCurrentTheme();
+  if(theme === 'dark'){
+    theme = 'light';
+  } else {
+    theme = 'dark';
+  }
+  localStorage.setItem('room.theme', `${theme}`);
+  loadTheme(theme)
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadTheme(getCurrentTheme());
+})
+
+
 
 const formatDate = (date) => {
   let month
@@ -60,7 +87,6 @@ const formatDate = (date) => {
 }
 
 
-
 const formatTime = (date) =>
   (date.getMinutes() > 9) ? date.getHours() + ':' + date.getMinutes() : date.getHours() + ':0' + date.getMinutes()
 
@@ -70,10 +96,12 @@ export default function Header() {
   const time = formatTime(current);
 
   useEffect(() => {}, [])
-
   useEffect(() => {
+
     setInterval(() => setCurrent(new Date()), 30000);
   }, [])
+
+  
 
   return (
     <div className='top'>
@@ -82,7 +110,7 @@ export default function Header() {
         <h1 className='title'>Helsinki Office</h1>
         <div className='header-line'/>
         <Breakpoint medium up>
-        <h2 className='mode' ><span className='light' onClick={() => lightMode()}>Light</span> / <span className='dark' onClick={() => darkMode()}>Dark</span></h2>
+        <h2 className='mode' id="mode" onClick={() => changeTheme()}><MdModelTraining/></h2>
         </Breakpoint>
         <h1 className='time'>{time}</h1>
       </div>
