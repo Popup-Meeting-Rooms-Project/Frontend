@@ -65,5 +65,5 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: production-build
+        name: build
         path: build
