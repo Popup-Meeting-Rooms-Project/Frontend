@@ -1,14 +1,13 @@
-import Header from './components/Header'
-import Main from './components/Main'
 import { BreakpointProvider } from 'react-socks'
 
+import Header from './components/Header'
+import Main from './components/Main'
+
 const App = () => (
-  <div>
     <BreakpointProvider>
-    <Header />
-    <Main />
+      <Header />
+      <Main />
     </BreakpointProvider>
-  </div>
 )
 
 export default App

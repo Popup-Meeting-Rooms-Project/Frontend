@@ -1,44 +1,27 @@
 import { useEffect, useState } from 'react'
 import { Breakpoint } from 'react-socks'
-import {MdModelTraining} from 'react-icons/md'
+import { MdModelTraining } from 'react-icons/md'
+
 import '../css/App.css'
 import headerPic from '../assets/headerPic.webp'
 
+const getCurrentTheme = () =>
+  localStorage.getItem('room.theme') !== null
+    ? localStorage.getItem('room.theme')
+    : window.matchMedia('(prefers-color-sceheme: dark)').matches ? 'dark' : 'light'
 
-
-function getCurrentTheme() {
-  let theme = window.matchMedia('(prefers-color-sceheme: dark)').matches ? 'dark' : 'light';
-  if (localStorage.getItem('room.theme') != null) {
-    theme = localStorage.getItem('room.theme')
-  }
-  return theme;
-}
-
-
-
-function loadTheme(theme) {
-  const root = document.querySelector(':root');
-  
- 
-  root.setAttribute('color-scheme' , `${theme}`)
+const loadTheme = (theme) => {
+  const root = document.querySelector(':root')
+  root.setAttribute('color-scheme', `${theme}`)
 }
 
 const changeTheme = () => {
-  let theme = getCurrentTheme();
-  if(theme === 'dark'){
-    theme = 'light';
-  } else {
-    theme = 'dark';
-  }
-  localStorage.setItem('room.theme', `${theme}`);
+  let theme = getCurrentTheme() === 'dark' ? 'light' : 'dark'
+  localStorage.setItem('room.theme', `${theme}`)
   loadTheme(theme)
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  loadTheme(getCurrentTheme());
-})
-
-
+window.addEventListener('DOMContentLoaded', () => loadTheme(getCurrentTheme()))
 
 const formatDate = (date) => {
   let month
@@ -86,22 +69,15 @@ const formatDate = (date) => {
   return date.getDate() + ' ' + month + ' ' + date.getFullYear()
 }
 
-
 const formatTime = (date) =>
   (date.getMinutes() > 9) ? date.getHours() + ':' + date.getMinutes() : date.getHours() + ':0' + date.getMinutes()
 
 export default function Header() {
   const [current, setCurrent] = useState(new Date())
-  const date = formatDate(current);
-  const time = formatTime(current);
+  const date = formatDate(current)
+  const time = formatTime(current)
 
-  useEffect(() => {}, [])
-  useEffect(() => {
-
-    setInterval(() => setCurrent(new Date()), 30000);
-  }, [])
-
-  
+  useEffect(() => setInterval(() => setCurrent(new Date()), 30000), [])
 
   return (
     <div className='top'>

@@ -24,16 +24,9 @@ export default function Map({ Data, selected, setSelected }) {
     setMapValues(toSet)
   }, [Data])
 
-  const changeColor = amount => {
-    if (amount === 0) {
-      return <p className='available-rooms-red'>{amount} available rooms</p>
-    } else {
-      return <p className='available-rooms-green'>{amount} available rooms</p>
-    }
-  }
-
-  const filterInputHandler = i => selected.includes(i) ? setSelected(selected.filter(floor => floor !== i)) : setSelected([...selected, i])
-
+  const filterInputHandler = i => selected.includes(i)
+    ? setSelected(selected.filter(floor => floor !== i))
+    : setSelected([...selected, i])
 
   const mapBuilder = () => {
     let boxes = []
@@ -57,6 +50,10 @@ export default function Map({ Data, selected, setSelected }) {
     }
     return boxes
   }
+
+  const changeColor = amount => amount === 0
+    ? <p className='available-rooms-red'>{amount} available rooms</p>
+    : <p className='available-rooms-green'>{amount} available rooms</p>
 
   return (
     <div className='map'>
