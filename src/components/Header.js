@@ -15,12 +15,6 @@ const loadTheme = (theme) => {
   root.setAttribute('color-scheme', `${theme}`)
 }
 
-const changeTheme = () => {
-  let theme = getCurrentTheme() === 'dark' ? 'light' : 'dark'
-  localStorage.setItem('room.theme', `${theme}`)
-  loadTheme(theme)
-}
-
 window.addEventListener('DOMContentLoaded', () => loadTheme(getCurrentTheme()))
 
 const formatDate = (date) => {
@@ -72,12 +66,19 @@ const formatDate = (date) => {
 const formatTime = (date) =>
   (date.getMinutes() > 9) ? date.getHours() + ':' + date.getMinutes() : date.getHours() + ':0' + date.getMinutes()
 
-export default function Header() {
+export default function Header({ setMode }) {
   const [current, setCurrent] = useState(new Date())
   const date = formatDate(current)
   const time = formatTime(current)
 
   useEffect(() => setInterval(() => setCurrent(new Date()), 30000), [])
+
+  const changeTheme = () => {
+    let theme = getCurrentTheme() === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('room.theme', `${theme}`)
+    loadTheme(theme)
+    setMode(theme)
+  }
 
   return (
     <div className='top'>

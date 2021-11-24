@@ -42,6 +42,7 @@ export default function Map({ Data, selected, setSelected }) {
                 checked={selected.includes(i)}
                 onChange={_ => filterInputHandler(i)}
                 inputProps={{ 'aria-label': 'Add floor to filter' }}
+                color='default'
               />
             </p>
             {changeColor(mapValues[i].freeRooms)}
