@@ -39,6 +39,9 @@ jobs:
     name: Test and build release
     needs: lint
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_URL: ${{ secrets.API_URL }}
+      REACT_APP_SSE_URL: ${{ secrets.SSE_URL }}
 
     strategy:
       matrix:
@@ -62,5 +65,5 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: production-build
+        name: build
         path: build

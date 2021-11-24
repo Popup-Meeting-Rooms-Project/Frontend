@@ -1,5 +1,10 @@
 # Front End Web Application
 
+Web application to display the list of Pop Up Rooms and their status, fetched from the Back End server and with automatic updates. Built using React.
+
+[![Linted & built](https://github.com/Popup-Meeting-Rooms-Project/Frontend/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Popup-Meeting-Rooms-Project/Frontend/actions/workflows/ci.yml)
+
+----
 
 - [Title](#front-end-web-application)
   - [Setup](#setup)
@@ -9,6 +14,9 @@
     - [Data Format](#data-format)
     - [Main.js](#mainjs)
     - [Main-MQTT.js](#main-mqttjs)
+
+
+----
 
 ## Setup
 
