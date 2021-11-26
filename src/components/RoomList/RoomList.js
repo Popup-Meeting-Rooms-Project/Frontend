@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react'
+import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
-import { Tooltip, FormControlLabel, Checkbox } from '@mui/material'
 
 import Table from './Table'
 
@@ -81,18 +81,15 @@ function RoomList ({ rooms, selected }) {
   // Using react-table v7 (component Table.js)
   return (
     <div>
-
       <FormControlLabel
         label='Available only'
         style={{display: 'flex', padding: '0.5em 0.5em 0 0', marginBottom: '-0.4em', justifyContent: 'flex-end'}}
         control={<Checkbox checked={checked} onChange={e => setChecked(e.target.checked)} color='default' />}
       />
-
       <Table 
         columns={columns}
         data={data}
       />
-
     </div>
   )
 }
