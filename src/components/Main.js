@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Breakpoint } from 'react-socks'
 
-import RoomList from './RoomList'
-import Map from './Map'
+import RoomList from './RoomList/RoomList'
+import Map from './Map/Map'
 
 // We can verify the data is in the correct format before populating, so the app doesn't crash when rendering the components.
 const verifyData = data => {

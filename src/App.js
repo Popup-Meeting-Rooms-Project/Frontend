@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { BreakpointProvider } from 'react-socks'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import Main from './components/Main'
 
 const App = () => {
