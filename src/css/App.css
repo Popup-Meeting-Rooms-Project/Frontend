@@ -242,5 +242,6 @@ body {
   --color-white: #121212;
   --color-header: var(--color-header-dark);
   --color-header-shadow: var(--color-header-shadow-dark);
-  color:#ffffff;
+  
+  color: #fff;
 }
