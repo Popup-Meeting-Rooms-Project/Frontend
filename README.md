@@ -1,5 +1,10 @@
 # Front End Web Application
 
+Responsive web application to display the list of Pop Up Rooms and their status, fetched from the Back End server and with automatic updates. Suitable for both desktop and mobile browsers. Built using React.
+
+[![Linted & built](https://github.com/Popup-Meeting-Rooms-Project/Frontend/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Popup-Meeting-Rooms-Project/Frontend/actions/workflows/ci.yml)
+
+----
 
 - [Title](#front-end-web-application)
   - [Setup](#setup)
@@ -9,6 +14,9 @@
     - [Data Format](#data-format)
     - [Main.js](#mainjs)
     - [Main-MQTT.js](#main-mqttjs)
+
+
+----
 
 ## Setup
 
@@ -82,3 +90,15 @@ Initial data is obtained using "fetch" to perform a `GET` request to the REST AP
 
 This was created as a POC during the first Sprint, when the teams were still debating whether the Front End should get updates directly from the MQTT broker or the Node server (via SSEs). Although we decided against using MQTT from the client's side, the implementation is left here as it might be of value (as of the beginning of the second Sprint, it was working correctly). The REST API is used for initial fetching of the data, as in the final version.
 
+
+## Third Party libraries used
+
+Our project uses the following third party component libraries:
+
+[react-table](https://github.com/tannerlinsley/react-table) v7 for building our table used to display the data.
+
+Licensed under the MIT license. Copyright (c) 2016 Tanner Linsley
+
+[MUI](https://github.com/mui-org/material-ui), formerly Material-UI, used for UI components based on Material Design.
+
+Licensed under the MIT license. Copyright (c) 2014 Call-Em-All
