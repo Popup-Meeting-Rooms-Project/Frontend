@@ -27,8 +27,8 @@ const time = formatTime(new Date())
 jest.useFakeTimers()
 
 it("renders header text properly", () => {
+  render(<Header />, container)
   act(() => {
-    render(<Header />, container)
     jest.runAllTimers()
   })
 

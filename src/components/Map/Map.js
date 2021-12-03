@@ -35,14 +35,15 @@ export default function Map({ Data, selected, setSelected }) {
       if (mapValues[i]) {
         boxes.push(
           <div key={i}>
-            <p className='floor-label' key={i} floor={i}>
+            <p className='floor-label' key={i} data-testid={'floor-label-' + i}>
               <span className='floor-number'>{i}. </span>
               <span className='map-floor'>floor</span>
               <Checkbox
                 checked={selected.includes(i)}
                 onChange={_ => filterInputHandler(i)}
-                inputProps={{ 'aria-label': 'Add floor to filter' }}
+                inputProps={{ 'aria-label': 'Add this floor to filter' }}
                 color='default'
+                data-testid={'checkbox ' + i}
               />
             </p>
             {changeColor(mapValues[i].freeRooms)}
@@ -52,9 +53,16 @@ export default function Map({ Data, selected, setSelected }) {
     return boxes
   }
 
-  const changeColor = amount => amount === 0
-    ? <p className='available-rooms-red'>{amount} available rooms</p>
-    : <p className='available-rooms-green'>{amount} available rooms</p>
+  const changeColor = amount => {
+    switch (amount) {
+      case 0:
+        return <p className='available-rooms-red' data-testid={'empty-room'}>{amount} available rooms</p>
+      case 1:
+        return <p className='available-rooms-green' data-testid={'busy-room'}>{amount} available room</p>
+      default:
+        return <p className='available-rooms-green'>{amount} available rooms</p>
+    }
+  }
 
   return (
     <div className='map'>

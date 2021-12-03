@@ -1,4 +1,4 @@
-// Basic tests of App.js (this was created with create-react-app)
+// Tests of App.js (base was created automatically with create-react-app)
 
 import { render, screen } from '@testing-library/react'
 import App from './App'

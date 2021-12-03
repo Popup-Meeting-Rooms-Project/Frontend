@@ -45,7 +45,7 @@
     "id":107,
     "room_name":"Callisto",
     "building_floor":4,
-    "detected":false
+    "detected":true
   },
   {
     "id":108,
