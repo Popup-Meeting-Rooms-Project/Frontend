@@ -3,22 +3,8 @@ import { render, screen } from '@testing-library/react'
 import Map from './Map'
 import placeholderData from '../../assets/placeholderdata.json'
 
-let container = null
-
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div")
-  document.body.appendChild(container)
-})
-
-afterEach(() => {
-  // cleanup on exiting
-  container.remove()
-  container = null
-})
-
 it("renders Map properly", () => {
-  render(<Map Data={placeholderData} selected={[]} />, container)
+  render(<Map Data={placeholderData} selected={[]} />)
 
   // Checking text components (trickier not being one single element).
 
@@ -29,7 +15,6 @@ it("renders Map properly", () => {
     expect(childNodes[0].textContent).toBe(i + '. ')
     expect(childNodes[1].textContent).toBe('floor')
   }
-  //expect(screen.getByTestId('floor-label-4').firstChild.textContent).toBe('4. ')
 
   // Checking available rooms text.
   expect(screen.getByTestId('empty-room').firstChild.textContent).toBe('0')
@@ -49,7 +34,7 @@ it("renders Map properly", () => {
 
 
 it("handles passed filters properly", () => {
-  render(<Map Data={placeholderData} selected={[1]} />, container)
+  render(<Map Data={placeholderData} selected={[1]} />)
 
   expect(screen.getByTestId('checkbox 1').firstChild).toHaveProperty('checked', true)
 })
