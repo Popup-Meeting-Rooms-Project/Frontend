@@ -1,4 +1,6 @@
+import React from 'react'
 import { render, screen } from '@testing-library/react'
+import userEvent from "@testing-library/user-event"
 
 import Map from './Map'
 import placeholderData from '../../assets/placeholderdata.json'
@@ -28,13 +30,20 @@ it("renders Map properly", () => {
   for (var i = 1; i < 5; i++) {  
     expect(screen.getByTestId('checkbox ' + i).firstChild).toHaveProperty('checked', false)
   }
-
-  // Click and have it enabled?
 })
 
+it("handles changing filters properly", () => {
+  const {rerender} = render(<Map Data={placeholderData} selected={[2,3]} />)
 
-it("handles passed filters properly", () => {
-  render(<Map Data={placeholderData} selected={[1]} />)
+  expect(screen.getByTestId('checkbox 1').firstChild).toHaveProperty('checked', false)
+  expect(screen.getByTestId('checkbox 2').firstChild).toHaveProperty('checked', true)
+  expect(screen.getByTestId('checkbox 3').firstChild).toHaveProperty('checked', true)
+  expect(screen.getByTestId('checkbox 4').firstChild).toHaveProperty('checked', false)
+
+  rerender(<Map Data={placeholderData} selected={[1]} />)
 
   expect(screen.getByTestId('checkbox 1').firstChild).toHaveProperty('checked', true)
+  for (var i = 2; i < 5; i++) {  
+    expect(screen.getByTestId('checkbox ' + i).firstChild).toHaveProperty('checked', false)
+  }
 })

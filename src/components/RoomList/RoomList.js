@@ -41,7 +41,7 @@ function RoomList ({ rooms, selected }) {
     if (row.value === true) {
       return (
         <Tooltip title='Occupied'>
-          <CancelIcon style={{ color: '#EF6E52' }} />
+          <CancelIcon style={{ color: '#EF6E52' }} data-testid='CancelIcon' />
         </Tooltip>
       )
     } else {
@@ -84,7 +84,7 @@ function RoomList ({ rooms, selected }) {
       <FormControlLabel
         label='Available only'
         style={{display: 'flex', padding: '0.5em 0.5em 0 0', marginBottom: '-0.4em', justifyContent: 'flex-end'}}
-        control={<Checkbox checked={checked} onChange={e => setChecked(e.target.checked)} color='default' />}
+        control={<Checkbox checked={checked} onChange={e => setChecked(e.target.checked)} color='default' data-testid='checkbox' />}
       />
       <Table 
         columns={columns}
