@@ -14,6 +14,8 @@ Responsive web application to display the list of Pop Up Rooms and their status,
     - [Data Format](#data-format)
     - [Main.js](#mainjs)
     - [Main-MQTT.js](#main-mqttjs)
+  - [Testing and CI](#testing-and-ci)
+  - [Third Party libraries used](#third-party-libraries-used)
 
 
 ----
@@ -89,6 +91,20 @@ Initial data is obtained using "fetch" to perform a `GET` request to the REST AP
 ### Main-MQTT.js
 
 This was created as a POC during the first Sprint, when the teams were still debating whether the Front End should get updates directly from the MQTT broker or the Node server (via SSEs). Although we decided against using MQTT from the client's side, the implementation is left here as it might be of value (as of the beginning of the second Sprint, it was working correctly). The REST API is used for initial fetching of the data, as in the final version.
+
+
+## Testing and CI
+
+Unit tests have been written using React's built-in test tools for the following components: App, Header, RoomList and Map.
+
+Tests are run automatically when push/merge into the main branch, as part of our CI setup which uses GitHub Actions. The script can be found inside the .github/workflows folder.
+
+The CI script contains two jobs:
+
+- Running a linter ([Super-Linter](https://github.com/github/super-linter)).
+- Building the production app and running the tests.
+
+If all the tasks succeed, the build folder is archived as an artifact and can be downloaded from the repository. This can be used to speed up (or automate) new deployments).
 
 
 ## Third Party libraries used
