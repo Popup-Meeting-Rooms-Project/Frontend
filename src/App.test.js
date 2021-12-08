@@ -1,6 +1,7 @@
-// Basic tests of App.js (this was created with create-react-app)
+// Tests of App.js (base was created automatically with create-react-app)
 
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
+//import { generateImage } from 'jsdom-screenshot'
 import App from './App'
 
 // Mocking EventSource
@@ -15,7 +16,7 @@ beforeAll(() => {
   global.EventSource.CLOSED = 2
 })
 
-test('renders learn react link', () => {
+test('dark mode works', () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
@@ -28,13 +29,16 @@ test('renders learn react link', () => {
     })),
   })
 
-  // DO WE NEED TO MOCK FETCH TOO?
-
   render(<App />)
+/*
+  const defaultScreen = await generateImage()
+  expect(defaultScreen).toMatchImageSnapshot()
+  $('#mode').click()
+  const darkModeScreen = await generateImage()
+  !expect(darkModeScreen).toMatchImageSnapshot()
+  $('#mode').click()
+  const lightModeScreen = await generateImage()
+  expect(lightModeScreen).toMatchImageSnapshot()
 
-  const header = screen.getByText(/Helsinki Office/i)
-  expect(header).toBeInTheDocument()
-
-  const tableHeader = screen.getByText(/Floor/i)
-  expect(tableHeader).toBeInTheDocument()
+  expect(defaultScreen).toMatchImageSnapshot()*/
 })
