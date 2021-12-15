@@ -33,7 +33,7 @@ export default function Header({ setMode }) {
   }
 
   return (
-    <div className='top'>
+    <div className='top' data-testid={'top'}>
       <img className='header-background' src={headerPic} alt='' />
       <div className='top-row'>
         <h1 className='title'>Helsinki Office</h1>
